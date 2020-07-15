@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Fave extends Component {
 
   constructor() {
-    super(props)
+    super()
     this.state = {
       favorited: false
     }
