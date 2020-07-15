@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 
 export default class Fave extends Component {
 
+  constructor() {
+    super(props)
+    this.state = {
+      favorited: false
+    }
+  }
+
   handleClick = (e) => {
     console.log('handling favorites')
     e.stopPropagation()
+    this.setState({
+      favorited: !this.state.favorited
+    })
   }
-
-
 
   render() {
     return (
