@@ -10,7 +10,7 @@ class FilmListing extends Component {
   }
   handleFilterClick = (filter) => {
     this.setState({
-      filter: this.state.filter === 'all' ? 'faves' : 'all'
+      filter: filter
     })
     console.log('clicked', this.state.filter)
   }
