@@ -6,9 +6,7 @@ class FilmPoster extends Component {
         const altText = `Movie poster for ${this.props.film.title}`
 
         return (
-            <div className="film-row">
-                <img src={this.props.posterImg} alt={altText} />
-            </div>
+            <img src={this.props.posterImg} alt={altText} />  
         );
     }
 }
