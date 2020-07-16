@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import TMDB from './TMDB';
 import FilmRow from './FilmRow'
 
-class FilmListing extends Component {
-    constructor() {
-        super()
-        this.state = {
-            filter: 'all'
-        }
-    }
-    handleFilterClick = (filter) => {
+const FilmListing = (props) => {
+
+    const [filter, setFilter] = useState('all')
+    
+    // handleFilterClick = (filter) => {
         
-        console.log('setting filter to ' + filter)
-        this.setState({filter})
-    }
-    render() {
-        const allFilms = this.props.films.map((film, i) => {
+    //     console.log('setting filter to ' + filter)
+    //     this.setState({filter})
+    // }
+    
+        const allFilms = props.films.map((film, i) => {
             return (
                 <div className="film-row">
                 <FilmRow film={film} key={`FilmRow-${i}`} />
@@ -26,11 +23,11 @@ class FilmListing extends Component {
             <div className="film-list">
                 <h1 className="section-title">FILMS</h1>
                 <div className="film-list-filters">
-                    <div className={`film-list-filter ${this.state.filter === 'all' ? 'is-active' : ''}`} onClick={() => this.handleFilterClick('all')}>
+                    <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} onClick={() => {setFilter('all')}}>
                         ALL
-            <span className="section-count">{this.props.films.length}</span>
+            <span className="section-count">{props.films.length}</span>
                     </div>
-                    <div className={`film-list-filter ${this.state.filter === 'faves' ? 'is-active' : ''}`} onClick={() => this.handleFilterClick('faves')}>
+                    <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={() => {setFilter('faves')}}>
                         FAVES
             <span className="section-count">0</span>
                     </div>
@@ -38,7 +35,7 @@ class FilmListing extends Component {
                 {allFilms}
             </div>
         );
-    }
+    
 }
 
 export default FilmListing;
