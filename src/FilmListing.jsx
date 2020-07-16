@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import FilmRow from './FilmRow'
 
-export default class FilmListing extends Component {
+const FilmListing = (props) => {
+  const [filter, setFilter] = useState({filter: 'all'})
+ 
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     filter: 'all'
+  //   }
+  // }
 
-  handleFilterClick = (e, filter) => {
-    console.log('setting filter to' + {filter})
+  // handleFilterClick = (filter) => {
+  //   //filter is shortform for filter: filter because they are the same name
+  //   this.setState({ filter })
+  //   console.log('setting filter to ' + filter)
 
-  }
+  // } 
 
-  render() {
-
-    const allFilms = this.props.films.map((film, i) => {
+    const allFilms = props.films.map((film, i) => {
       return (
        <FilmRow film={film} key={`filmRow-${i}`} />
       )  
@@ -20,11 +28,13 @@ export default class FilmListing extends Component {
       <div className="film-list">
         <h1 className="section-title">FILMS</h1>
         <div className="film-list-filters">
-          <div className="film-list-filter">
+          <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} 
+          onClick={() => setFilter('all')}>
               ALL
-              <span className="section-count">{this.props.films.length}</span>
+              <span className="section-count">{props.films.length}</span>
           </div>
-          <div onClick={() => this.handleFilterClick('faves')} className="film-list-filter">
+          <div onClick={() => setFilter('faves')} 
+          className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`}>
               FAVES
               <span className="section-count">0</span>
           </div>
@@ -34,7 +44,7 @@ export default class FilmListing extends Component {
       </div>
     
     );
-  }
+  
 }
 
- 
+export default FilmListing
