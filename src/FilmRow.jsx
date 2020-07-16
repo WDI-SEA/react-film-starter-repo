@@ -4,22 +4,20 @@ import Fave from './Fave'
 
 class FilmRow extends Component {
     handleDetailsClick = (film) => {
-        console.log('fetching details for ' + film)
+        console.log('fetching details for ' + film.title)
     }
     render() {
 
         return (
-            <div>
-                <div className="film-row" onClick={()=> this.handleDetailsClick('film')}>
-                   <FilmPoster poster_path={`https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`} 
+            <div className="film-row" onClick={() => this.handleDetailsClick(this.props.film)}>
+                <FilmPoster poster_path={`https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`}
                     title={this.props.film.title}
-                   />
-                    <div className="film-summary">
-                        <h1>{this.props.film.title}</h1>
-                        <p>{this.props.film.release_date.substring(0,4)}</p>
-                    </div>
-                    <Fave />
+                />
+                <div className="film-summary">
+                    <h1>{this.props.film.title}</h1>
+                    <p>{this.props.film.release_date.substring(0, 4)}</p>
                 </div>
+                <Fave />
             </div>
         );
     }
