@@ -1,0 +1,45 @@
+import React, { Component } from 'react';
+import FilmRow from './FilmRow';
+
+
+
+class FilmListing extends Component {
+    constructor(){
+        super()
+        this.state = {
+            filter: 'all'
+        }
+    }
+
+    handleFilterClick = (filter) => {
+        this.setState({ filter })
+        console.log('setting filter to')
+    }
+
+    render() {
+        const allFilms = this.props.films.map((film, i) =>{
+          return (
+            <FilmRow film={film} key={`FilmRow-${i}`}/>
+          )
+        })
+
+        return (
+            <div className="film-list">
+              <h1 className="section-title">FILMS</h1>
+              <div classname="film-list-filters">
+                  <div className={`film-list-filter ${this.state.filter === 'all'? 'is-active' : ''}`} onClick={() => this.handleFilterClick('all')}>
+                      ALL
+                      <span className="section-count">{this.props.films.length}</span>
+                  </div>
+              <div className={`film-list-filter ${this.state.filter === 'faves'? 'is-active' : ''}`} onClick={() => this.handleFilterClick('faves')}>
+                Faves
+                
+                </div>     
+            </div>
+              {allFilms}
+            </div>
+        );
+      }
+}
+
+export default FilmListing;
