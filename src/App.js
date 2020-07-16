@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import FilmDetails from './FilmDetails'
-import FilmListing from './FilmListing'
-import TMDB from './TMDB'
-
+import FilmListing from './FilmListing';
+import FilmDetails from './FilmDetails';
+import TMDB from './TMDB';
 
 class App extends Component {
   render() {
