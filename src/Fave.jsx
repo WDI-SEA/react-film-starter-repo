@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Fave extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isFave: false
-    }
-  }
+const Fave = (props) => {
+  // const [isFave, setIsFave] = useState(false); No longer used here and moved to parent 
   
-  handleClick = (e) => {
-    e.stopPropagation();
-    // set isFave = !isFave
-    this.setState({isFave: !this.state.isFave});
-    console.log("Handling Fave click");
-  }
+  const handleClick = e => {
+    e.stopPropagation()
+    props.onFaveToggle()
+    console.log('Handling Fave click!')
+  };  
+    // Delete the `setIsFaves` line. You no longer track state here
+    // setIsFave(!isFave)
 
-  render() {
     // When isFave is true, icon to be remove_from_queue
-    let icon = this.state.isFave ?
+    let icon = props.isFave ?
     "remove_from_queue" : "add_to_queue";
+
     return (
       <div 
         className={`film-row-fave ${icon}`} 
-        onClick={this.handleClick}>
+        onClick={handleClick}>
         <p className="material-icons">{icon}</p>
         
       </div>
     );
   }
-}
+
 
 export default Fave;
