@@ -6,11 +6,14 @@ import TMDB from './TMDB';
 
 export default function App() {
 
+  const [current, setCurrent] = useState({});
+
   let films = TMDB.films;
-  let current = {};
+  //let current = {};
 
   const handleDetailsClick = film => {
     console.log(`fetching details for ${film}`)
+    setCurrent(film);
   }
 
   return (
