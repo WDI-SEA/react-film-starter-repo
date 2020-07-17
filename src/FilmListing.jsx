@@ -20,8 +20,12 @@ const FilmListing = (props) => {
       let newFaves = [...faves];
       newFaves.splice(filmIndex, 1);
       setFaves(newFaves);
+      console.log(`Removing from faves`)
+      console.log(newFaves)
     } else {
       setFaves([film, ...faves])
+      console.log("Adding to faves")
+      console.log(faves)
     }
   }
 
@@ -29,7 +33,8 @@ const FilmListing = (props) => {
     return <FilmRow 
             film={film}   
             key={`filmRow-${i}`} 
-            onFaveToggle={handleFaveToggle} />
+            onFaveToggle={handleFaveToggle} 
+            isFave={faves.includes(film)} />
     });
 
     return (
