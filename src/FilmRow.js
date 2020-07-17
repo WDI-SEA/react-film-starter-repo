@@ -23,7 +23,7 @@ const FilmRow = (props) => {
                 <h1>{props.film.title}</h1>
                 <p>{year[0]}</p>
             </div>
-            <Fave onFaveToggle={() => props.onFaveToggle(props.film)} /> 
+            <Fave onFaveToggle={() => props.onFaveToggle(props.film)} isFave={props.isFave} /> 
         </div>
     );
 }

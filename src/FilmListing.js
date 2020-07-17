@@ -14,8 +14,8 @@ const FilmListing = (props) => {
         let filmIndex = faves.indexOf(film)
         if(filmIndex >= 0) {
             console.log('removing from favorites array')
-            newFaves.splice(filmIndex, 1)
             let newFaves = [ ...faves]
+            newFaves.splice(filmIndex, 1)
             setFaves(newFaves)
         } else {
              console.log('adding to faves list')
@@ -29,28 +29,28 @@ const FilmListing = (props) => {
         setFilter({filter})
     }
  
-        const allFilms = props.films.map( (film, i) => {
-            return (
-                <FilmRow film={film} key={`filmRow-${i}`} onFaveToggle={handleFaveToggle} />
-            )
-        })
-
+    const allFilms = props.films.map( (film, i) => {
         return (
-            <div className="film-list">
-            <h1 className="section-title">FILMS</h1>
-            <div className="film-list-filters">
-                <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} onClick={() => handleFilterClick('all')}>
-                    ALL
-                    <span className="section-count">{props.films.length}</span>
-                </div>
-                <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={() => handleFilterClick('faves')}>
-                    FAVES
-                    <span className="section-count">0</span>
-                </div>
+            <FilmRow film={film} key={`filmRow-${i}`} onFaveToggle={handleFaveToggle} isFave={faves.includes(film)} />
+        )
+    })
+
+    return (
+        <div className="film-list">
+        <h1 className="section-title">FILMS</h1>
+        <div className="film-list-filters">
+            <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} onClick={() => handleFilterClick('all')}>
+                ALL
+                <span className="section-count">{props.films.length}</span>
             </div>
-            {allFilms}
+            <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={() => handleFilterClick('faves')}>
+                FAVES
+                <span className="section-count">0</span>
+            </div>
         </div>
-        );
+        {allFilms}
+    </div>
+    );
 }
 
 export default FilmListing;

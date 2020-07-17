@@ -12,7 +12,7 @@ const App = () => {
   return (
       <div className="film-library">
         <FilmListing films={film} />
-        <FilmDetails films={film} current={current} />
+        <FilmDetails current={current} />
       </div>
   );
 }
