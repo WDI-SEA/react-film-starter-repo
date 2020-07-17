@@ -4,18 +4,10 @@ import FilmRow from './FilmRow'
 const FilmListing = (props) => {
   const [filter, setFilter] = useState({filter: 'all'})
  
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     filter: 'all'
-  //   }
-  // }
-
   // handleFilterClick = (filter) => {
   //   //filter is shortform for filter: filter because they are the same name
   //   this.setState({ filter })
   //   console.log('setting filter to ' + filter)
-
   // } 
 
     const allFilms = props.films.map((film, i) => {
