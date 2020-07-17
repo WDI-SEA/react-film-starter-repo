@@ -17,11 +17,11 @@ export default function FilmRows(props) {
     <div  className="film-row"
           onClick={ () => handleDetailsClick(props.film.title) }
     >
-      <FilmPoster poster= { poster } />
+      <FilmPoster poster={ poster } />
       <div className="film-summary">
         <h1>{ props.film.title }</h1>
         <p>{ props.film.release_date }</p>
-        <Fave />
+        <Fave onFaveToggle={ () => { props.onFaveToggle(props.film) } } />
       </div>
   </div>
   );
