@@ -4,9 +4,9 @@ import Fave from './Fave'
 
 const FilmRow = (props) => {
 
-  const handleDetailsClick = (film) => {
-    console.log(`Fecthing details for ${film.title}`);
-  }
+    const handleDetailsClick = (film) => {
+        console.log(`Fecthing details for ${film.title}`);
+    }
 
     return (
       <div className="film-row" onClick={() => handleDetailsClick(props.film)}>
@@ -19,7 +19,7 @@ const FilmRow = (props) => {
           <h1>{props.film.title}</h1>
           <p>{props.film.release_date.substring(0, 4)}</p>
         </div>
-        <Fave onFaveToggle={() => props.onFaveToggle(props.film)}/>
+        <Fave onFaveToggle={() => props.onFaveToggle(props.film)} isFave={props.isFave}/>
       </div>
     );
   }
