@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import TMDB from "./TMDB.js";
 import './App.css';
-import FilmDetails from './FilmDetails.jsx';
-import FilmListing from './FilmListing.jsx';
+import FilmDetails from './FilmDetails.js';
+import FilmListing from './FilmListing.js';
 
-class App extends Component {
-  render() {
+const App = () => {    
+  const [currentFilm, setCurrentFilm] = useState({});
+  const handleDetailsClick = (film) => {
+    console.log("details requested for film", film);
+    setCurrentFilm(film);
+  }
     return (
       <div className="film-library">
-        <FilmListing />
-        <FilmDetails />
+        <FilmListing filmsData={TMDB.films} handleDetailsClick={handleDetailsClick}/>
+        <FilmDetails currentFilm={currentFilm}/>
       </div>
     );
-  }
 }
 
 export default App;
