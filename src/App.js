@@ -10,10 +10,15 @@ const App = () => {
   const [films, setFilms] =useState(TMDB.films)
   const [current, setCurrent] = useState({})
 
+  const handleDetailsClick = (film) => {
+    console.log("setting filter")
+    setCurrent(film)
+  }
+
   return (
     <div className="film-library">
-          <FilmListing films={films} />
-          <FilmDetails films={current} />
+          <FilmListing films={films} handleDetailsClick={handleDetailsClick}/>
+          <FilmDetails film={current} />
     </div>
   );
 }
