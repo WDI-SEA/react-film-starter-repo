@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div className="film-library">
       <FilmListing films={films} handleDetailsClick={handleDetailsClick}/>
-      <FilmDetails film={current} />
+      <FilmDetails current={current} />
     </div>
   );
 }
