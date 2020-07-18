@@ -3,13 +3,13 @@ import FilmPoster from './FilmPoster'
 import Fave from './Fave'
 
 const FilmRow = (props) => {
-
-    const handleDetailsClick = (film) => {
-        console.log(`Fecthing details for ${film.title}`);
-    }
+    
+    // const handleDetailsClick = (film) => {
+    //     console.log(`Fecthing details for ${film.title}`);
+    // }
 
     return (
-      <div className="film-row" onClick={() => handleDetailsClick(props.film)}>
+      <div className="film-row" onClick={() => props.handleDetailsClick(props.film)}>
         <FilmPoster
           src={`https://images.tmdb.org/t/p/w780${props.film.poster_path}`}
           alt={`Poster for the film ${props.film.title}`}

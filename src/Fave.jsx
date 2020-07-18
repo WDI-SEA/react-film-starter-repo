@@ -7,7 +7,6 @@ const Fave = (props) => {
   const handleClick = (e) => {
     e.stopPropagation();
     // set isFave = !isFave
-
     props.onFaveToggle()
     console.log("Handling Fave click");
   }
