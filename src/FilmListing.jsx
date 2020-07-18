@@ -17,7 +17,7 @@ const FilmListings = (props) => {
         //push it into newFaves as an item (exact copy)
         //Dope: You can add on top of then (ex: BurgerStack)
         // [...faves, add items here like you would in arr]
-        const filmIndex = faves.indexOf(film)
+        let filmIndex = faves.indexOf(film)
         //f the film is found in the array, indexOf() will return an index value starting at 0.
         if (filmIndex >= 0) {
             let newFaves = [...faves];    
@@ -28,11 +28,15 @@ const FilmListings = (props) => {
             setFaves([film, ...faves])
             console.log('adding to favs')
         }
+        console.log(faves)
     }
 
-    let allFilms = props.films.map((film, i) => {
+    // set relevant array (filmsToDisplay)
+    let filmsToDisplay = filter === 'all' ? props.films : faves
+
+    let allFilms = filmsToDisplay.map((film, i) => {
         return (
-            <FilmRow film={film} key={`FilmRow-${i}`} onFaveToggle={handleFaveToggle} />
+            <FilmRow film={film} key={`FilmRow-${i}`} handleDetailsClick={props.handleDetailsClick} onFaveToggle={handleFaveToggle} isFave={faves.includes(film)}  />
         )
         });
 
@@ -48,7 +52,7 @@ const FilmListings = (props) => {
                 <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`}
                 onClick={() => {handleFilterClick('faves')}}>
                     FAVES
-                    <span className="section-count">0</span>
+                    <span className="section-count">{faves.length}</span>
                 </div>
             </div>
 
