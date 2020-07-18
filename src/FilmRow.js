@@ -5,14 +5,11 @@ import Fave from './Fave'
 
 const FilmRow = (props) => {
 
-    const handleDetailsClick = film => {
-        console.log(`Fetching details for ${film.title} 🐈`)
-    }
 
     let year = props.film.release_date.split('-')
 
     return (
-        <div className="film-row" onClick={() => handleDetailsClick(props.film)}>
+        <div className="film-row" onClick={() => props.handleDetailsClick(props.film)}>
 
             <FilmPoster 
                 src={`https://image.tmdb.org/t/p/w780${props.film.poster_path}`}
