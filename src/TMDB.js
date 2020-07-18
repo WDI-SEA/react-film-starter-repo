@@ -63,7 +63,7 @@ const TMDB = {
         "poster_path": "/5CGjlz2vyBhW5xHW4eNOZIdgzYq.jpg",
         "backdrop_path": "/7KsqfXDECZMryX1Rv4RKsT7SIjQ.jpg",
         "overview": "The world's top bodyguard gets a new client, a hit man who must testify at the International Court of Justice. They must put their differences aside and work together to make it to the trial on time.",
-        "release_date": "2017-08-16"
+        "release_date": "2017-ove08-16"
     },
     {
       "id": 316154,
