@@ -1,21 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import FilmDetails from './FilmDetails'
+import FilmList from './FilmList'
+import TMDB from './TMDB'
 
-class App extends Component {
-  render() {
+
+const App = () => {
+  let films = TMDB.films
+  
+  const [initFilms, setInitFilms] = useState(films)
+  
+  const [current, setCurrent] = useState({
+  
+  })
+  
+  const handleDetailsClick = (film) => {
+    console.log(`fetching details for ${film.title}`)
+    setCurrent(film)
+  }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div className="film-library">
+          <FilmList films={initFilms} details={handleDetailsClick}/>
+          <FilmDetails film={current} />
+        </div>
     );
   }
-}
+
 
 export default App;
