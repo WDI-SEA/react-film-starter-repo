@@ -1,18 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
-import FilmListing from './FilmListing'
-import FilmDetails from './FilmDetails'
+import FilmListing from './FilmListing';
+import FilmDetails from './FilmDetails';
 import TMDB from './TMDB';
+import FilmRow from './FilmRow';
 
 const App = () => {
-  return (
-    <div className="film-library">
-      <FilmListing films={TMDB.films} />
-      <FilmDetails films={TMDB.films} />
+let films = TMDB.films
+const [allFilms, setAllFilms] = useState(films)
+const [current, setCurrent] = useState({})
 
-    </div>
-  );
+const handleDetailsClick = (film) => {
+  console.log(`Fetching details for ${film.title} 🍌`)
+  setCurrent(film)
 }
+    return (
+      <div className="film-library">
+        <FilmListing  films={films} handleDetailsClick={handleDetailsClick} />
+        <FilmDetails films={current}/>
+      </div>
+    );
+  }
+
+
 
 export default App;
