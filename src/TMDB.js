@@ -1,5 +1,5 @@
 const TMDB = {
-  api_key: '<REPLACE_THIS_WITH_TMDB_API_KEY>',
+  api_key: `${process.env.REACT_APP_API_KEY}`,
   films: [
     {
       "id": 346364,
@@ -29,7 +29,7 @@ const TMDB = {
         "id": 335984,
         "title": "Blade Runner 2049",
         "poster_path": "/cbRQVCia0urtv5UGsVFTdqLDIRv.jpg",
-        "backdrop_path": "/zfWPeRgYpRjPZLGwwkfnTfaFnNh.jpg",
+        "backdrop_path": "/ilRyazdMJwN05exqhwK4tMKBYZs.jpg",
         "overview": "Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. K's discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.",
         "release_date": "2017-10-04"
     },
