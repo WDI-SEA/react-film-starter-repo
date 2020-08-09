@@ -5,8 +5,12 @@ class FilmListing extends Component {
     constructor(props) {
         super(props);
         this.handleFilterClick = this.handleFilterClick.bind(this)
+        this.handleFaveToggle = this.handleFaveToggle.bind(this)
         this.state = {
-            filter: 'all'
+            filter: 'all',
+            faves: [
+
+            ]
         }
     }
     handleFilterClick(filter) {
@@ -14,10 +18,31 @@ class FilmListing extends Component {
             return{filter: filter}
         })
     }
+    handleFaveToggle(film) {
+        let newFaves = [...this.state.faves];
+        const filmIndex = newFaves.indexOf(film);
+        if (filmIndex < 0) {
+          console.log(`ADDING ${film.title} TO FAVES`)
+          newFaves = [...newFaves, film];
+        } else {
+          console.log(`REMOVING ${film.title} TO FAVES`)
+          newFaves.splice(filmIndex, 1)
+        }
+        this.setState((state, props) => {
+            return{faves: newFaves}
+        });
+    }
     render() {
-    const allFilms = this.props.films.map((film) => {
+    const allFilms = this.props.films.map((film, i) => {
         return (
-            <FilmRow film={film.title} poster={film.poster_path} year={film.release_date}/>
+            <FilmRow 
+            film={film.title} 
+            key={`filmRow-${i}`}
+            poster={film.poster_path} 
+            year={film.release_date} 
+            onFaveToggle={this.handleFaveToggle}
+            isFave={this.state.faves.includes(film)} 
+            />
         )
     }) 
     return (
