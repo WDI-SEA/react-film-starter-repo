@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import FilmPoster from './FilmPoster'
+import Fave from './Fave'
 
 class FilmRow extends Component {
     render() {
-        const posterUrl = `https://image.tmdb.org/t/p/w780/${this.props.poster}`
         const fullyear = this.props.year.split("-", 1)
         return (
         <div className="film-row">
-          <h1>{this.props.film}</h1>
-          <img src={posterUrl} alt="movie-poster" />
+          <FilmPoster poster={this.props.poster}/>
           <div className="film-summary">
+            <h1>{this.props.film}</h1>
             <p>{fullyear}</p>
           </div>
+          <Fave />
         </div>
         );
     }
