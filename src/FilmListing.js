@@ -5,7 +5,7 @@ class FilmListing extends Component {
     render() {
     const allFilms = this.props.films.map((film) => {
         return (
-            <FilmRow film={film.title}/>
+            <FilmRow film={film.title} poster={film.poster_path} year={film.release_date}/>
         )
     }) 
       return (
