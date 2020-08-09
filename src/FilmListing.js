@@ -33,13 +33,14 @@ class FilmListing extends Component {
         });
     }
     render() {
-    const allFilms = this.props.films.map((film, i) => {
+    const filmsToDisplay = this.state.filter === "all" ? this.props.films : this.state.faves;
+    const allFilms = filmsToDisplay.map((film, i) => {
         return (
             <FilmRow 
             film={film.title} 
             key={`filmRow-${i}`}
             poster={film.poster_path} 
-            year={film.release_date} 
+            year={film.release_date.split("-", 1)} 
             onFaveToggle={this.handleFaveToggle}
             isFave={this.state.faves.includes(film)} 
             />
@@ -59,7 +60,7 @@ class FilmListing extends Component {
                 this.handleFilterClick("faves")
               }}>
                 FAVES
-                <span className="section-count">0</span>
+                <span className="section-count">{this.state.faves.length}</span>
               </div>
           </div>
           
