@@ -10,7 +10,9 @@ class FilmListing extends Component {
         }
     }
     handleFilterClick(filter) {
-        console.log(`Setting filter to: ${filter}`)
+        this.setState((state,props) => {
+            return{filter: filter}
+        })
     }
     render() {
     const allFilms = this.props.films.map((film) => {
