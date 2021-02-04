@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import './App.css'
 
 import FilmPoster from './FilmPoster'
+import Fave from './Fave'
 
 class FilmRow extends Component {
+    handleDetailsClick = (film) => {
+        console.log(`Fetching details for ${film}`)
+    }
     render() {
         // console.log(this.props, "film film")
         let posterUrl = <FilmPoster image={this.props.film.poster_path}/>
@@ -16,12 +20,13 @@ class FilmRow extends Component {
 
         return (
             <>
-                <div className="film-row">
+                <div className="film-row" onClick={() => this.handleDetailsClick(this.props.film.title)}>
                     {posterUrl}
                     <div className="film-summary">
                         {movieTitle}
                         {movieYear}
                     </div>
+                    <Fave />
                 </div>
 
             </>
