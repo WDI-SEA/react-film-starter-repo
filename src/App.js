@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FilmDetails from './FilmDetails'
+import FilmListing from './FilmListing'
+import TMDB from './TMDB'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='filmlibrary'>
+        <div className='film-list'>
+          <FilmListing films={TMDB.films} />
+          <FilmDetails films={TMDB.films} />
+          <h1 className='section-title'>FILMS</h1>
+          
+          </div> 
       </div>
     );
   }
