@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 
 class Fave extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {isFave: false}
+    }
+
     handleClick = (e) => {
         e.stopPropagation()
+        this.setState({isFave: !this.state.isFave})
         console.log('fave clicked')
     }
     render() {
