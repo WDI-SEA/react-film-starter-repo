@@ -6,8 +6,8 @@ class FilmDetails extends Component {
         return (
             <div className='filmlibrary'>
             <div className='film-list'>
-              <h1 className='section-tilte'>FILMS</h1>
-              </div> 
+              <h1 className='section-tilte'></h1>
+            </div> 
           </div>  
         )
     }
