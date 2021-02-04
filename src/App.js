@@ -17,4 +17,6 @@ class App extends Component {
   }
 }
 
+// Where is index.css being imported? And how come my poster images are small/how do I make them bigger? In-line styling didn't seem to work...
+
 export default App
