@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import FilmPoster from './FilmPoster'
+import Fave from './Fave'
 
 class FilmRow extends Component{
+    handleDetailsClick = (film) =>{
+        console.log(`Fetching Details for ${film}`)
+    }
+
     render(){
         let releaseDate = this.props.film.release_date;
         releaseDate = releaseDate.split('-');
         releaseDate.splice(1,2)
         return(
-            <div className="film-row">
+            <div className="film-row" onClick={() =>{this.handleDetailsClick('film')}}>
                 <FilmPoster poster={this.props.film.poster_path} title={this.props.film.title} />
 
 
@@ -15,6 +20,8 @@ class FilmRow extends Component{
                     <h1>{this.props.film.title}</h1>
                     <p>{releaseDate}</p>
                 </div>
+
+                <Fave />
             </div>
         )
     }
