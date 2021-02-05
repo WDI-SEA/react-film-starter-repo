@@ -5,7 +5,7 @@ import Fave from './Fave'
 class FilmRow extends Component {
 
     handleDetailsClick = (film) => {
-        console.log('Fetching details for' + film)
+        console.log('Fetching details for ' + film)
     }
 
     render() {
@@ -23,3 +23,5 @@ class FilmRow extends Component {
 }
 
 export default FilmRow
+
+{/* <div onClick={()=>this.handleDetailsClick()} className="film-row"> */}

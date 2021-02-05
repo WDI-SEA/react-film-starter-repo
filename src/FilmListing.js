@@ -4,7 +4,7 @@ import FilmRow from './FilmRow'
 class FilmListing extends Component {
 
     handleFilterClick = (filter) => {
-        console.log('Setting filter to' + filter)
+        console.log('Setting filter to ' + filter)
     }
 
     render() {
