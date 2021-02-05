@@ -15,7 +15,7 @@ class FilmListing extends Component {
             <div className="film-list">
                 <h1 className="section-title">FILMS</h1>
                 <div className="film-list-filters">
-                    <div className="film-list-filter">
+                    <div onClick={this.handleFilterClick} className="film-list-filter">
                         ALL
                         <span className="section-count">{this.props.films.length}</span>
                     </div>
