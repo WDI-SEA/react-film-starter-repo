@@ -10,6 +10,7 @@ class Fave extends Component {
     // }
     handleClick = (e) => {
         e.stopPropagation()
+        this.setState({isFave: !this.state.isFave})
         console.log('handling fave click!')
     }
 
