@@ -7,7 +7,7 @@ class Fave extends Component {
     render() {
         return(
             <div className="film-row-fave add_to_queue">
-                <p className="material-icons">add_to_queue</p>
+                <p onClick={this.handleClick}className="material-icons">add_to_queue</p>
             </div>
         )
     }
