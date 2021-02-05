@@ -1,0 +1,119 @@
+ShouldComponentUpdate()
+
+-preventing unnecessary renders
+    -- checks the current props and state, compares it to the next props and state
+
+    ex)
+        function shallowEqual(objA: mixed, objB: mixed): boolean {
+        if (objA === objB) {
+            return true;
+        }
+
+        if (typeof objA !== 'object' || objA === null ||
+            typeof objB !== 'object' || objB === null) {
+            return false;
+        }
+
+        var keysA = Object.keys(objA);
+        var keysB = Object.keys(objB);
+
+        if (keysA.length !== keysB.length) {
+            return false;
+        }
+
+        // Test for A's keys different from B.
+        var bHasOwnProperty = hasOwnProperty.bind(objB);
+        for (var i = 0; i < keysA.length; i++) {
+            if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
+            return false;
+            }
+        }
+
+        return true;
+        }
+
+        function shallowCompare(instance, nextProps, nextState) {
+        return (
+            !shallowEqual(instance.props, nextProps) ||
+            !shallowEqual(instance.state, nextState)
+        );
+        }
+
+        var ReactComponentWithPureRenderMixin = {
+        shouldComponentUpdate: function(nextProps, nextState) {
+            return shallowCompare(this, nextProps, nextState);
+        },
+        };
+
+- Stop renders at the source
+- Jump ahead with forceUpdate()
+    - with using forceUpdate(), shouldComponentUpdate() can be ignored
+    - when it forceUpdate() is used, component must re-rendered.
+
+============================================================================
+componentWillUpdate()
+
+- During Update phase, re-render is needed. (nextProps, nextState)
+- Unlike componentWillMount(), componentWillUpdate() is called every time re-render is required.
+    - also, this.setState() should not be called in componentWillUpdate(), because setState triggers another componentWillUpdate, then it will end up in an infinite loop
+- it is called before render()
+- it is used to handle configuration changes, and prepare for the next render
+
+ex)
+
+    componentWillUpdate(nextProps, nextState) {
+    if (nextState.open == true && this.state.open == false) {
+        this.props.onWillOpen();
+    }
+    }
+
+
+    increase +1 every second
+
+
+const { Component } = React;
+
+class Car extends Component {
+
+  constructor(props) {
+     // Inside of the constructor, call super
+    super(props)
+    this.state = {
+        // then, set the state - to the passed in speed OR 0
+      speed: props.speed || 0
+    }
+    
+    // bind the increment speed function
+    this.incrementSpeed = this.incrementSpeed.bind(this)
+  }
+
+  componentDidMount() {
+    
+    // calls this.incrementSpeed after one second
+    window.setTimeout(this.incrementSpeed, 1000)
+  }
+
+  incrementSpeed() {
+    
+    // recursive method
+    // increases speed by 1 again after one second
+    this.setState(prevState => ({ speed: prevState.speed + 1 }))
+    window.setTimeout(this.incrementSpeed, 1000)
+  }
+
+  render() {
+    return (
+      <div>
+        This {this.props.model} is going {this.state.speed} miles per hour!
+      </div>
+    )
+  }
+
+}
+
+const App = () => <Car model="Corvette" speed={60} />
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+)
