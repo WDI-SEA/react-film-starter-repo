@@ -10,7 +10,8 @@ class FilmRow extends Component{
         return(           
                 <div className="film-row" onClick={()=>this.handleDetailsClick(this.props.film.title)}>
                     {/* <FilmRow src={poster_path} alt={this.props.film.title}/> */}
-                    <img src={poster_path} alt="" />
+                    <FilmPoster src={poster_path} alt={this.props.film.title}/>
+                    
 
                     <div className="film-summary">
                         <Fave/>

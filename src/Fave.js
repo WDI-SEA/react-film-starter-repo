@@ -5,18 +5,25 @@ class Fave extends Component{
     //     // This binding is necessary to make `this` work in the callback
     //     this.handleClick = this.handleClick.bind(this)
     // }
-    stae={
-        isFave:false
+    state={
+        isFave:false,
+        className :'add_to_queue'
     }
     handleClick=(e)=>{
         e.stopPropagation()
         console.log("I'm clicking")
-       
+       this.setState({isFave: !this.state.isFave})
+       if(this.state.className=="add_to_queue"){
+           this.setState({className:"remove_from_queue"})
+        }else{
+           this.setState({className:"add_to_queue"})
+
+       }
     }
     render(){
         return(
-            <div className="film-row-fave add_to_queue" onClick={this.handleClick}>
-                <p className="material-icons">add_to_queue</p>
+            <div className={`film-row-fave ${this.state.className}`} onClick={this.handleClick}>
+                <p className="material-icons">{this.state.className}</p>
             </div>
         )
     }
