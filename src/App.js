@@ -1,4 +1,5 @@
 // Instructions: https://github.com/WDI-SEA/react-omdb-instructions/blob/master/README.md
+// Part 2: https://github.com/WDI-SEA/react-omdb-instructions/blob/master/part2.md
 
 import React, { Component } from 'react'
 import './App.css'
