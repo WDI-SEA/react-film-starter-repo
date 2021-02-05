@@ -3,6 +3,11 @@ import FilmPoster from './FilmPoster'
 import Fave from './Fave'
 
 class FilmRow extends Component {
+
+    handleDetailsClick = (film) => {
+        console.log('Fetching details for' + film)
+    }
+
     render() {
         return(
             <div className="film-row">
