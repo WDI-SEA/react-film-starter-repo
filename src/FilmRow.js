@@ -3,6 +3,11 @@ import FilmPoster from './FilmPoster'
 import Fave from './Fave'
 
 class FilmRow extends Component {
+
+  handleDetailsClick = (film) => {
+    console.log(`Fetching details for ${film}`)
+  }
+
   constructor(props) {
     super(props) 
   }
@@ -11,9 +16,9 @@ class FilmRow extends Component {
   render () {
 
         return (
-          <div className="film-row">
+          <div onClick={() => this.handleDetailsClick('film')}className="film-row">
             <FilmPoster film={this.props.film} />
-          <div className="film-summary">
+            <div className="film-summary">
               <h1>{this.props.film.title}</h1>
               <p>{this.props.film.release_date.split('-').[0]}</p>
             </div>
