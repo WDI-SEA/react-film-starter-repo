@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './index.css'
 import FilmPoster from './FilmPoster'
 
 class FilmRow extends Component {
