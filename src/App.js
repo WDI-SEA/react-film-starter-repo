@@ -7,16 +7,16 @@ import TMDB from './TMDB'
 
 class App extends Component {
   state = {
-    filmList:TMDB
+    TMDB    
   }
   render () {    
     return (
       <div className='film-library'>
         <FilmList
-          films={TMDB.films}
+          films={this.state.TMDB.films}
         />  
         <Details
-          films={TMDB.films}
+          films={this.state.TMDB.films}
           />        
       </div>
     )
