@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
 import Details from './Details';
 import FilmList from './FilmList';
 import TMDB from './TMDB.js';
 
-class App extends Component {
-    state = {
-      filmList: TMDB
-    }
-  render() {
-    console.log(this.state.movieData)
+export default function App () {
+  const [films, setFilms] = useState({
+    films: TMDB.films,
+    current: {}
+  })
     return (
       <div className="film-library">
-        <FilmList films={TMDB.films}/>
-
-        <Details films={TMDB.films}/>
+        {/* <FilmList films={TMDB.films} /> */}
+        {/* <FilmList films={filmsList} /> */}
+        {/* <FilmList films={TMDB.films}/> */}
+        <FilmList films={films.films}/>
+        <Details film={films.current} />
       </div>
-    );
-  }
+    )
 }
-
-export default App;
