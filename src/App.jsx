@@ -37,7 +37,7 @@ export default function App () {
 
     <div className="film-library">
       <FilmList films={allFilms.films} handleDetailsClick={handleDetailsClick} />
-      <Details films={allFilms.current} />
+      <Details film={allFilms.current} />
     </div>
 
   )
