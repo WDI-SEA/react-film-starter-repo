@@ -2,7 +2,7 @@ const TMDB = {
   api_key: '<REPLACE_THIS_WITH_TMDB_API_KEY>',
   films: [
     {
-      "id": 346364,
+        "id": 346364,
         "title": "It",
         "poster_path": "/9E2y5Q7WlCVNEhP5GiVTjhEhx1o.jpg",
         "backdrop_path": "/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
@@ -10,7 +10,7 @@ const TMDB = {
         "release_date": "2017-09-05"
     },
     {
-      "id": 343668,
+        "id": 343668,
         "title": "Kingsman: The Golden Circle",
         "poster_path": "/pKESfn2Pdy0b7drvZHQb7UzgqoY.jpg",
         "backdrop_path": "/vLsw44dKHp1LhGCmcv3Pv6LXgEH.jpg",
@@ -18,7 +18,7 @@ const TMDB = {
         "release_date": "2017-09-20"
     },
     {
-      "id": 339403,
+        "id": 339403,
         "title": "Baby Driver",
         "poster_path": "/dN9LbVNNZFITwfaRjl4tmwGWkRg.jpg",
         "backdrop_path": "/goCvLSUFz0p7k8R10Hv4CVh3EQv.jpg",

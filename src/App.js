@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import FilmRow from './components/FilmRow.jsx';
+import Details from './components/Details.jsx';
 import './App.css';
+import FilmList from './components/FilmList.jsx';
+import TMDB from './TMDB.js';
 
 class App extends Component {
+  state = {
+    TMDB,
+    films: [...TMDB.films]
+  }
   render() {
+    
+   
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      
+       <div className="film-library">
+        <FilmList films={this.state.films}/>
+        <Details />
       </div>
+   
     );
   }
 }
