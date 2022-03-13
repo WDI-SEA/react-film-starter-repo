@@ -5,30 +5,46 @@ const FilmList = ({films, detailsClickHandler}) => {
     const [filter, setFilter] = useState("all")
     const [faveDisplay, setFaveDisplay] = useState([])
 
-    const handleFilterClick = (name) => {
-        setFilter({filter: name})
-    }
+    // const handleFilterClick = (name) => {
+    //     setFilter({filter: name})
+    // }
 
     const onFaveToggle = (film) => {
         let faveDisplayCopy = [...faveDisplay]
         const filmIndex  = faveDisplayCopy.indexOf(film)
-        if(!filmIndex) {
+        if(filmIndex < 0) {
+            console.log(`adding ${film.title} to faves`)
             faveDisplayCopy.push(film)
         } else {
+            console.log(`removing ${film.title} from faves`)
             faveDisplayCopy.splice(filmIndex, 1)
         }
         setFaveDisplay(faveDisplayCopy)
     }
 
-    const filmTitle = films.map((film, idx) => {
-        return (
+    // const filmTitle = films.map((film, idx) => {
+    //     return (
+    //         <FilmRow
+    //             key={idx}
+    //             film={film}
+    //             posterUrl={film.poster_path}
+    //             faveDisplay={faveDisplay}
+    //             isFave={faveDisplay.includes(film)}
+    //             onFaveToggle={onFaveToggle}
+    //             detailsClickHandler={detailsClickHandler}
+    //         />
+    //     )
+    // })
+
+    const filmsToDisplay = filter === "all" ? films: faveDisplay
+
+    const filmTitle = filmsToDisplay.map((film, idx) => {
+        return(
             <FilmRow
                 key={idx}
                 film={film}
-                posterUrl={film.poster_path}
-                faveDisplay={faveDisplay}
-                isFave={faveDisplay.includes(film)}
                 onFaveToggle={onFaveToggle}
+                isFave={faveDisplay.includes(film)}
                 detailsClickHandler={detailsClickHandler}
             />
         )
@@ -39,7 +55,7 @@ const FilmList = ({films, detailsClickHandler}) => {
             <div className="film-list-filters">
                 <div 
                     className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`}
-                    onClick={() => {handleFilterClick("all")}}
+                    onClick={() => {setFilter("all")}}
                         
                 >
                     ALL
@@ -49,11 +65,11 @@ const FilmList = ({films, detailsClickHandler}) => {
                     
                 <div 
                     className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`}
-                    onClick={() => {handleFilterClick("faves")}}
+                    onClick={() => {setFilter("faves")}}
                         
                 >
                     FAVES
-                    <span className="section-count">0</span>
+                    <span className="section-count">{faveDisplay.length}</span>
                 </div>
                     
             </div>
