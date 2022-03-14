@@ -1,27 +1,24 @@
-import { Component } from "react";
-
-export default class Fave extends Component {
-  state = {
-    isFave: false,
-  };
-  handleClick = (e) => {
-    this.setState((prevState) => {
-      return { isFave: !prevState.isFave };
-    });
+export default function Fave(props) {
+  const handleClick = (e) => {
     e.stopPropagation();
+    console.log("Handling Fave click!");
+
+    // Add this line. You'll call the function passed through props
+    props.onFaveToggle();
+
+    // Delete the `setIsFaves` line. You no longer track state here
+    // setIsFave(!isFave)
   };
-  render() {
-    return (
-      <div
-        onClick={this.handleClick}
-        className={`film-row-fave ${
-          this.state.isFave === true ? "remove_from_queue" : "add_to_queue"
-        }`}
-      >
-        <p className="material-icons">{`${
-          this.state.isFave === true ? "remove_from_queue" : "add_to_queue"
-        }`}</p>
-      </div>
-    );
-  }
+  return (
+    <div
+      onClick={handleClick}
+      className={`film-row-fave ${
+        props.isFaves === true ? "remove_from_queue" : "add_to_queue"
+      }`}
+    >
+      <p className="material-icons">{`${
+        props.isFaves === true ? "remove_from_queue" : "add_to_queue"
+      }`}</p>
+    </div>
+  );
 }
