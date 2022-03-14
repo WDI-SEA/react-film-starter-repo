@@ -18,7 +18,7 @@ export default function FilmList ({ films, handleDetailsClick }) {
     setFaves(newFaves)
   }
 
-  const filmsToDisplay = filter === 'all' ? films : faves //ternnary
+  const filmsToDisplay = filter === 'all' ? films : faves 
 
   const allFilms = filmsToDisplay.map((film, index) => {
     return (
