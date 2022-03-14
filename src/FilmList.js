@@ -79,14 +79,14 @@ export default function FilmList({ films, handleDetailsClick }) {
         setFaves(newFaves)
     }
 
-    const filmsToDisplay = filter === 'all'?films:faves
+    const filmsToDisplay = filter === 'all' ? films : faves
 
     const handleFilterClick = (filter) => {
         // e.preventDefault()
         console.log(filter)
-        this.setState({
-            filter: filter
-        })
+        setFilter(
+            filter
+        )
     }
 
     const allFilms = filmsToDisplay.map((film, index) => {
@@ -107,15 +107,15 @@ export default function FilmList({ films, handleDetailsClick }) {
                 <h1 className="section-title">FILMS</h1>
                 <div className="film-list-filters">
                     <div 
-                        className={`film-list-filter ${filter.filter === 'all' ? 'is-active' : ''}`} 
-                        onClick={(e) => setFilter({ ...filter, filter: "all" })}
+                        className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} 
+                        onClick={() => {handleFilterClick("all")}}
                     >
                         ALL
                         <span className="section-count">{films.length}</span>
                     </div>
                     {/* can also do this and give the div an id and use event.target.id */}
                     <div 
-                        className={`film-list-filter ${filter.filter === 'faves' ? 'is-active' : ''}`} 
+                        className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} 
                         onClick={()=>{handleFilterClick("faves")}}
                     >                            
                         FAVES
