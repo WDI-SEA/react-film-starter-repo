@@ -46,6 +46,7 @@ const FilmList = ({films, detailsClickHandler}) => {
                 onFaveToggle={onFaveToggle}
                 isFave={faveDisplay.includes(film)}
                 detailsClickHandler={detailsClickHandler}
+                posterUrl={film.poster_path}
             />
         )
     })

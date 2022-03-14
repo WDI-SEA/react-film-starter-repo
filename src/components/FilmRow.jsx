@@ -7,7 +7,7 @@ const FilmRow = ({film, posterUrl, onFaveToggle, faveDisplay, detailsClickHandle
     return(
         <div onClick={() => {detailsClickHandler(film)}} className="film-row">
             <img 
-                src={`https://image.tmdb.org/t/p/w780/` + posterUrl} 
+                src={`https://image.tmdb.org/t/p/w780/${posterUrl}`} 
                 alt="" 
             />
           
