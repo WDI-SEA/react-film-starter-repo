@@ -1,7 +1,6 @@
 export default function Fave({onFaveToggle, isFave}){
     const handleClick = (e) => {
-        e.stopPropagation()
-        console.log('handling the click')
+        e.stopPropagation()        
         onFaveToggle()
     }
     const css =  isFave? 'remove_from_queue':'add_to_queue'
