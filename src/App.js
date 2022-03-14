@@ -15,7 +15,6 @@ export default function App(props) {
   return (
     <div className="film-library">
       <FilmList
-        movieList={this.props.data.films}
         handleDetailsClick={handleDetailsClick}
         films={films}
         current={current}
