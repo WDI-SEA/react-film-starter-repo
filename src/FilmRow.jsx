@@ -1,35 +1,32 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import Fave from './Fave';
 import Poster from './Poster';
 
-class FilmRow extends Component {
+const FilmRow = (props) => {
 
-    handleDetailsClick = (film) => {
-        console.log(`fetching details for ${film}`)
-    }
 
-    render() {
-        const posterURL = 'https://image.tmdb.org/t/p/w780/' + [this.props.films.poster_path]
-        const date = new Date(this.props.films.release_date)
-        const year = date.getFullYear()
-        // const newDate = this.props.films.release_date.split("-")
-        return (
-            <>
-                <div className="film-row" onClick={() => this.handleDetailsClick(this.props.films.title)}>
-                    <Poster
-                        alt={this.props.films.title}
-                        url={posterURL}
+    const posterURL = 'https://image.tmdb.org/t/p/w780/' + [props.films.poster_path]
+    const date = new Date(props.films.release_date)
+    const year = date.getFullYear()
+    return (
+        <>
+            <div className="film-row" onClick={() => props.handleDetailsClick(props.films)}>
+                <Poster
+                    alt={props.films.title}
+                    url={posterURL}
+                />
+
+                <div className="film-summary">
+                    <Fave
+                        onFaveToggle={() => { props.handleFaveToggle(props.films) }}
+                        isFave={props.isFaves} //isFave should be true or false, if the movies is in array, return true, otherwise false
                     />
-
-                    <div className="film-summary">
-                        <Fave />
-                        <h1>{this.props.films.title}</h1>
-                        <p>{year}</p>
-                    </div>
+                    <h1>{props.films.title}</h1>
+                    <p>{year}</p>
                 </div>
-            </>
-        );
-    }
+            </div>
+        </>
+    )
 }
 
 export default FilmRow;

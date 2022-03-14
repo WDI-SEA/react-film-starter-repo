@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
 
-class Poster extends Component {
 
-    render() {
+const Poster = (props) => {
 
-        return (
-            <>
-                <img src={this.props.url} alt={this.props.alt} />
-            </>
-        )
-    }
+
+    return (
+        <>
+            <img src={props.url} alt={props.alt} />
+        </>
+    )
 }
+
 
 export default Poster;
