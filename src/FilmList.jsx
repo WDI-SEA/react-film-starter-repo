@@ -10,8 +10,8 @@ export default function FilmList (props) {
     let newFaves = [...faves]
     const filmIndex = newFaves.indexOf(film)
     if (filmIndex < 0) {
-      newFaves = [...newFaves, film];
       console.log(`Adding ${film.title} to faves...`)
+      newFaves = [...newFaves, film];
     } else {
       console.log(`removing ${film.title} from faves...`)
       newFaves.splice(filmIndex, 1)
