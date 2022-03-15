@@ -18,9 +18,10 @@
 // export default App;
 
 import TMDB from './TMDB'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import FilmList from './FilmList'
 import Details from './Details'
+import 'dotenv/config'
 
 export default function App() {
   const [films,setFilms] = useState(TMDB.films)
@@ -30,6 +31,18 @@ export default function App() {
     console.log(`Fetching details for ${film.title}`)
     setCurrent(film)
   }
+  
+  useEffect(()=>{
+    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+    // console.log(popularFilmsUrl)
+    console.log("useEffect is firing!")
+    fetch(popularFilmsUrl)
+    .then(res=>res.json())
+    .then(jsonData => {
+      // console.log(jsonData)
+      setFilms(jsonData.results)
+    })
+  },[])
 
   return (
     <div className='film-library'>
