@@ -22,20 +22,6 @@ const FilmList = ({films, detailsClickHandler}) => {
         setFaveDisplay(faveDisplayCopy)
     }
 
-    // const filmTitle = films.map((film, idx) => {
-    //     return (
-    //         <FilmRow
-    //             key={idx}
-    //             film={film}
-    //             posterUrl={film.poster_path}
-    //             faveDisplay={faveDisplay}
-    //             isFave={faveDisplay.includes(film)}
-    //             onFaveToggle={onFaveToggle}
-    //             detailsClickHandler={detailsClickHandler}
-    //         />
-    //     )
-    // })
-
     const filmsToDisplay = filter === "all" ? films: faveDisplay
 
     const filmTitle = filmsToDisplay.map((film, idx) => {
