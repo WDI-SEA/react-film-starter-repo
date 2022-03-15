@@ -4,9 +4,6 @@ import Details from './Details'
 import FilmList from './FilmList'
 // import TMDB from './TMDB'
 
-
-
-
 function App () {
   const [allFilms, setFilm] = useState({
     films: [],
