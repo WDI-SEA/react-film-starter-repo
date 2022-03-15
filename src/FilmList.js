@@ -8,11 +8,9 @@ export default function FilmList ({ films, handleDetailsClick }) {
   const handleFaveToggle = film => {
     let newFaves = [...faves]
     const filmIndex = newFaves.indexOf(film)
-    if (filmIndex < 0) {
-      console.log(`adding ${film.title} to faves`)
+    if (filmIndex < 0) {      
       newFaves = [...newFaves, film]
-    } else {
-      console.log(`removing ${film.title} to faves`)
+    } else {      
       newFaves.splice(filmIndex, 1)
     }
     setFaves(newFaves)
