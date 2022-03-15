@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Details from './Details';
 import FilmList from './FilmList';
@@ -21,9 +21,20 @@ import TMDB from './TMDB';
 
 const App = () => {
 	const [ allFilms, setFilm ] = useState({
-		films: TMDB.films,
+		films: [],
 		current: {}
 	});
+
+	const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env
+		.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`;
+
+	useEffect(() => {
+		console.log('UseEffect is firing!');
+		fetch(popularFilmsUrl).then((response) => response.json()).then((jsonData) => {
+			console.log(jsonData.results);
+			setFilm({ films: jsonData.results, current: allFilms.current });
+		});
+	}, []);
 
 	const handleDetailsClick = (movie) => {
 		console.log(movie);
