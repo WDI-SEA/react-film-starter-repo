@@ -42,7 +42,6 @@ import Poster from './Poster';
 import Fave from './Fave';
 
 
-
 export default function FilmRows({film, onFaveToggle, isFave, handleDetailsClick}){
 
     
@@ -51,6 +50,7 @@ export default function FilmRows({film, onFaveToggle, isFave, handleDetailsClick
 //    const handleDetailsClick = (film) =>{
 //         console.log(film)
 //     }
+
     return (
         <div 
         className="film-row"
@@ -70,3 +70,4 @@ export default function FilmRows({film, onFaveToggle, isFave, handleDetailsClick
         </div>
     )
 }
+
