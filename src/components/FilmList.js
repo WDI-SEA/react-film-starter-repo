@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import FilmRow from './FilmRow'
 
 
@@ -45,3 +45,7 @@ class FilmList extends Component {
 }
 
 export default FilmList;
+
+export default function FilmList () {
+    
+}
