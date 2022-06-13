@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import { useState } from 'react'
 
-export default class Details extends Component {
-    render() {
+export default function Details(props) {
+
         return (
             <div>
                 <h2>DETAILS</h2>
             </div>
         )
-    }
 }
