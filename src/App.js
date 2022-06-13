@@ -18,13 +18,12 @@ import TMDB from './TMDB'
 
 const App = () => {
   const films = TMDB.films
-    return (
-      <div className="film-library">
-        <FilmList films={films}/>
-
-        <Details films={films}/>
-      </div>
-    );
+  return (
+    <div className='film-library'>
+      <FilmList films={films} />
+      <Details films={films} />
+    </div>
+  )
 }
 
 export default App
