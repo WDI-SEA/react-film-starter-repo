@@ -1,16 +1,12 @@
 import Poster from "../Poster"
 import Fav from "./Fav"
 
-const FilmRow = ({ film }) => {
-  const handleDetailsClick = (film) => {
-    console.log(`Fetching details for ${film.title}`)
-  }
-
+const FilmRow = ({ film, onFaveToggle, isFave, onDetailsClick }) => {
   return (
     <div
       onClick={(e) => {
         e.stopPropagation()
-        handleDetailsClick(film)
+        onDetailsClick(film)
       }}
       className="film-row"
     >
@@ -22,7 +18,7 @@ const FilmRow = ({ film }) => {
         <h1>{film.title}</h1>
         <p>{film.release_date}</p>
       </div>
-      <Fav />
+      <Fav onFaveToggle={() => onFaveToggle(film)} isFave={isFave} />
     </div>
   )
 }

@@ -1,15 +1,15 @@
 import { useState } from "react"
 
-const Fav = () => {
-  const [isFave, setIsFav] = useState(false)
-  const handleClick = () => setIsFav(!isFave)
+const Fav = ({ isFave, onFaveToggle }) => {
+  const handleClick = (e) => {
+    e.stopPropagation()
+    console.log("Handling fave click!")
+    onFaveToggle()
+  }
 
   return (
     <div
-      onClick={(e) => {
-        e.stopPropagation()
-        handleClick()
-      }}
+      onClick={handleClick}
       className={`film-row-fave ${
         isFave ? "remove_from_queue" : "add_to_queue"
       }`}
