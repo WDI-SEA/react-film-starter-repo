@@ -8,6 +8,15 @@ function FilmList(props) {
     const handleFaveToggle = (film) => {
         console.log("toggle fave here")
         let newFaves = [...faves];
+        const filmIndex = newFaves.indexof(film)
+        
+        if(filmIndex === -1){
+            console.log(`ADDING ${film.title} TO FAVES`)
+            newFaves = [...newFaves, film]
+        } else {
+            console.log(`REMOVING ${film.title} TO FAVES`)
+            newFaves.splice(filmIndex, 1)
+        }
         setFaves(newFaves)
 
     }
@@ -21,8 +30,11 @@ function FilmList(props) {
     const films = props.films
     const allFilms = films.map((film, i) => {
         return (
-            <FilmRow film={film}
-                key={`film-${i}`} />
+            <FilmRow 
+            film={film}
+            key={`film-${i}`}
+            onFaveToggle={handleFaveToggle} 
+            />
         )
     })
     return (
