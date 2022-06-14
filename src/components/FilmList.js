@@ -21,8 +21,9 @@ const FilmList = ({ films, handleDetailsClick }) => {
     }
     setFaves(newFaves)
   }
+  const filmsToDisplay = filter === 'all' ? films : faves
 
-  const allFilms = films.map(film => {
+  const allFilms = filmsToDisplay.map(film => {
     return (
       <FilmRow
         key={film.id}
