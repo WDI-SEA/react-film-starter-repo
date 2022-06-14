@@ -4,11 +4,12 @@ import FilmRow from './FilmRow';
 function FilmList(props) {
     const [filter, setFilter] = useState('all')
     const [faves, setFaves] = useState([])
+    const [isFave, setIsFave] = useState(false)
 
     const handleFaveToggle = (film) => {
         console.log("toggle fave here")
         let newFaves = [...faves];
-        const filmIndex = newFaves.indexof(film)
+        const filmIndex = newFaves.indexOf(film)
         
         if(filmIndex === -1){
             console.log(`ADDING ${film.title} TO FAVES`)
@@ -27,28 +28,34 @@ function FilmList(props) {
     }
 
     // console.log(this)
-    const films = props.films
-    const allFilms = films.map((film, i) => {
+    const filmsToDisplay = filter === 'all' ? props.films : faves
+    const allFilms = filmsToDisplay.map((film, i) => {
         return (
             <FilmRow 
             film={film}
             key={`film-${i}`}
-            onFaveToggle={handleFaveToggle} 
+            onFaveToggle={handleFaveToggle}
+            isFave={faves.includes(film)}
+            handleDetailsClick={props.handleDetailsClick}
             />
         )
     })
     return (
         <div className="film-list">
-            <p>{filter}</p>
+            {/* <p>{filter}</p> */}
             <h1 className="section-title">FILMS</h1>
             <div className="film-list-filters">
-                <div className="film-list-filter" onClick={() => handleFilterClick('all')}>
+            <div 
+                className={`film-list-filter 
+                ${filter === 'all' ? 'is-active' : ''}`}
+                onClick={()=>handleFilterClick('all')}
+                >
                     ALL
                     <span className="section-count">{props.films.length}</span>
                 </div>
                 <div className="film-list-filter" onClick={() => handleFilterClick('faves')}>
                     FAVES
-                    <span className="section-count">0</span>
+                    <span className="section-count">{faves.length}</span>
                 </div>
             </div>
 
