@@ -1,26 +1,42 @@
-import React, {Component} from "react";
+
 import Poster from "./Poster";
 import Fave from "./Fave";
 
-export default class FilmRow extends Component{
+// export default class FilmRow extends Component{
 
-    handleDetailsClicked = (film)=>{
-        console.log('fetching details for', this.props.film.title)
-    }
+//     handleDetailsClicked = (film)=>{
+        
+//     }
 
-    render(){
-        const posterUrl = `https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`
-        const year = new Date(this.props.film.release_date)
-        return(
-            <div className="film-row" onClick={this.handleDetailsClicked}>
-            <Poster url={posterUrl} title={this.props.film.title}/>
+//     render(){
 
+//         return(
+
+//         )
+//     }
+// }
+
+export default function FilmRow(props) {
+    return (
+        <div
+            onClick={(e) => {
+                e.stopPropagation()
+                props.onDetailsClick(props.film)
+            }}
+            className="film-row"
+        >
+            <Poster
+                url={`https://image.tmdb.org/t/p/w780/${props.film.poster_path}`}
+                title={props.film.title}
+            />
             <div className="film-summary">
-                <h1>{this.props.film.title}</h1>
-                <p>{year.getFullYear()}</p>
+                <h1>{props.film.title}</h1>
+                <p>{props.film.release_date}</p>
             </div>
-            <Fave />
-            </div>
-        )
-    }
+            <Fave
+                onFaveToggle={() => { props.onFaveToggle(props.film) }}
+                isFave={props.isFave}
+            />
+        </div>
+    )
 }

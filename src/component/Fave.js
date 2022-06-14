@@ -1,31 +1,42 @@
-import React, {Component} from 'react'
 
-export default class Fave extends Component{
+import { useState } from 'react'
+
+// export default class Fave extends Component{
     
-    state = {
-        isFave: false
-    }
+//     state = {
+//         isFave: false
+//     }
 
-    handleClick = (e) =>{
-        e.stopPropagation()
-        console.log("handling Fave click!")
-        this.setState((prevState)=>{ 
-            return {
-                isFave: !prevState.isFave
-            } 
-        })
-    }
+//     handleClick = (e) =>{
 
-    render(){
-        return(
-            <div 
-            className={`film-row-fave ${this.state.isFave === true ? 'remove_from_queue' : 'add_to_queue'}`} 
-            onClick={this.handleClick}
-            >
-                <p className="material-icons">
-                    {`${this.state.isFave === true ? 'remove_from_queue' : 'add_to_queue'}`}
-                </p>
-            </div>
-        )
+//         this.setState((prevState)=>{ 
+//             return {
+//                 isFave: !prevState.isFave
+//             } 
+//         })
+//     }
+
+//     render(){
+//         return(
+
+//         )
+//     }
+// }
+
+export default function Fave(props) {
+    // const [isFave, setFave] = useState(false)
+    const handleClick = () => {
+        props.onFaveToggle()
     }
+    return (
+        <div
+            onClick={(e) => {
+                e.stopPropagation()
+                handleClick()
+            }}
+            className={`film-row-fave ${props.isFave ? 'remove_from_queue' : 'add_to_queue'}`}
+        >
+            <p className="material-icons">{props.isFave ? 'remove_from_queue' : 'add_to_queue'}</p>
+        </div>
+    )
 }
