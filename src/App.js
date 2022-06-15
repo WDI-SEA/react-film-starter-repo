@@ -1,3 +1,4 @@
+import axios from "axios"
 import React, { useState } from "react"
 import "./App.css"
 import Details from "./components/Details"
@@ -18,11 +19,9 @@ function App() {
 
   useEffect(() => {
     const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
-    fetch(popularFilmsUrl)
-      .then((response) => response.json())
-      .then((jsonDeets) => {
-        console.log(jsonDeets)
-      })
+    const response = await axios.get(popularFilmsUrl)
+    setFilms(response.data.results)
+      
   }, [])
   
   return (
