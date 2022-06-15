@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { useState } from "react";
 import FilmRow from "./FilmRow";
 
 const FilmList = (props) => {
@@ -6,9 +6,8 @@ const FilmList = (props) => {
     faves: [],
   });
   handleFilterClick = (filter) => {
-    console.log("a filter was clicked");
     console.log(filter);
-    this.setState({ filter: filter });
+    props.setState({ filter: filter });
   };
 
   const films = props.films;
