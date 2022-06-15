@@ -4,7 +4,8 @@ import './App.css';
 import FilmList from './components/FilmList'
 import Details from './components/Details'
 import TMDB from './TMDB'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+// import axios from 'axios'
 
 // class App extends Component {
 //   render() {
@@ -29,8 +30,34 @@ import { useState } from 'react'
 // }
 
 const App = () => {
+
   const [current, setCurrent] = useState({})
-  const [films, setFilms] = useState(TMDB.films)  
+  const [films, setFilms] = useState(TMDB.films)
+
+  const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await axios.get(popularFilmsUrl)
+  //       // console.log(popularFilmsUrl)
+  //       res = res.data
+  //       setFilms(res.data.results)
+
+  //     } catch(error) {
+  //       console.log('api error', error)
+  //     }
+  //   })()
+  // }, [popularFilmsUrl])
+
+  useEffect(() => {
+    
+    fetch(popularFilmsUrl)
+      .then(response => response.json())
+      .then(jsonData => {
+        setFilms(jsonData.results)
+      })
+  }, [popularFilmsUrl])
 
   const handleDetailsClick = (film) => {
     console.log(`Fetching details for ${film.title}`)
