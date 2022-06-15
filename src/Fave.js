@@ -18,24 +18,26 @@
 //     }
 // }
 
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Fave () {
+function Fave (props) {
 
-const [icon, setIcon] = usestate()
-
-
+const [icon, setIcon] = useState('add_to_que')
 
 
+useEffect(() => {
+  setIcon(props.isFave ? 'remove_from_queue' : 'add_to_queue')
+} , [props.isFave])
 
-  handleClick = (e) => {
+
+ const  handleClick = (e) => {
     e.stopPropagation()
     console.log("handling fave click!");
     props.onFaveToggle()
 	}
 
 
-    let icon = props.isFave ? 'remove_from_queue' : 'add_to_queue'
+    // let icon = props.isFave ? 'remove_from_queue' : 'add_to_queue'
 
     return (
       <div className={`film-row-fave ${icon}`} onClick={handleClick}>

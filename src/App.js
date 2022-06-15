@@ -29,9 +29,19 @@ import TMDB from './TMDB';
 
 function App () {
 
+    const url = `https://api.themoviedb.org/3/movie/550?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
     const [films, setFilms] = useState(TMDB.films)
-    const [faves, setfaves] = usestate([])
-    const [current, setCurrent] = usestate({})
+    const [faves, setfaves] = useState([])
+    const [current, setCurrent] = useState({})
+
+   const  useEffect=(() => {
+      const popularFilmsUrl = `https://api.themoviedb.org/3/movie/550?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+      fetch(popularFilmsUrl)
+      .then(response => response.json())
+      .then(jsonDeets => {
+        console.log(jsonDeets)
+      })
+    }, [])
 
     const handleDetailsClick = film => {
       setCurrent(film)

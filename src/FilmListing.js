@@ -62,10 +62,27 @@ function FilmListing (props) {
 
     setFilter(filter)
   }
+  const handleFaveToggle = (film) => {
+    let newFaves = [...faves]
+    const filmIndex = newFaves.indexOf(film)
+    if (filmIndex < 0) {
+      newFaves = [...newFaves, film]
+    } else {
+      newFaves.splice(filmIndex, 1)
+    }
+    setFaves(newFaves)
+  }
     // ask bout this
     let filmsToDisplay = filter === 'all' ? props.films : faves;
-    const allFilms = filmsToDisplay.map((film, i) => <FilmRow film={film} key={`filmRow-${i}`} handleDetailsClick={props.handleDetailsClick}/>)
-
+    const allFilms = filmsToDisplay.map((film, i) => (
+    <FilmRow
+      film={film}
+      key={`filmRow-${i}`}
+      handleDetailsClick={props.handleDetailsClick}
+      isFave={faves.includes(film)}
+      handleDetailsClick={props.handleDetailsClick}
+      />)
+    )
     return (
       <div className="film-list">
         <h1 className="section-title">FILMS</h1>
@@ -76,7 +93,7 @@ function FilmListing (props) {
           </div>
           <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={() => handleFilterClick('faves')}>
             FAVES
-            <span className="section-count">0</span>
+            <span className="section-count">{faves.length}</span>
           </div>
       </div>
 

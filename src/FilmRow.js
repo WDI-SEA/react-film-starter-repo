@@ -27,12 +27,12 @@
 
 // export default FilmRow;
 
-import React, { Component } from 'react';
+import React  from 'react';
 import FilmPoster from './FilmPoster';
 import Fave from './Fave';
 
-function FilmRow () {
-  handleDetailsClick = film => {
+function FilmRow (props) {
+ const handleDetailsClick = film => {
     console.log(`Fetching movie details for ${film.title}`)
   }
 
@@ -48,7 +48,7 @@ function FilmRow () {
           <h1>{props.film.title}</h1>
           <p>{props.film.release_date.substr(0,4)}</p>
         </div>
-        <Fave />
+        <Fave onFaveToggle={() => {props.onFaveToggle(props.film)}} isFave={props.isFave} />
       </div>
     );
 
