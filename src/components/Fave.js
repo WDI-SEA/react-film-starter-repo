@@ -9,6 +9,8 @@ export default function Fave(props){
         props.onFaveToggle()
     }
 
+    let icon = props.isFave ? 'remove_from_queue' : 'add_to_queue'
+
     return (
         <div 
         className={`film-row-fave ${props.isFave === true ? 'remove_from_queue' : 'add_to_queue'}`}
@@ -16,7 +18,7 @@ export default function Fave(props){
         onClick={handleClick}
         
         >
-            <p className="material-icons">add_to_queue</p>
+            <p className="material-icons">{icon}</p>
         </div>
     )
 }

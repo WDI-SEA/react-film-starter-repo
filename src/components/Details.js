@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
 export default function Details(props){
     // const [current, setCurrent] = useState({})
@@ -19,16 +19,16 @@ export default function Details(props){
         </div>
       )
       
-      const emptyInfo = (
-        <div className="film-detail">
-          <p>
-            <i className="material-icons">subscriptions</i>
-            <span>No film selected</span>
-          </p>
-        </div>
-      )
+    const emptyInfo = (
+    <div className="film-detail">
+        <p>
+        <i className="material-icons">subscriptions</i>
+        <span>No film selected</span>
+        </p>
+    </div>
+    )
 
-      let details = props.film.id ? filmInfo : emptyInfo
+    let details = props.film.id ? filmInfo : emptyInfo
     return(
         <div className="film-details">
             <h1 className="section-title">DETAILS</h1>
