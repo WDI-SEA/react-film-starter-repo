@@ -4,7 +4,7 @@ import FilmRow from './FilmRow';
 function FilmList(props) {
     const [filter, setFilter] = useState('all')
     const [faves, setFaves] = useState([])
-    const [isFave, setIsFave] = useState(false)
+    // const [isFave, setIsFave] = useState(false)
 
     const handleFaveToggle = (film) => {
         console.log("toggle fave here")

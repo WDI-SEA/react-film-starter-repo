@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 
 export default function Details(props){
     
@@ -37,12 +37,3 @@ export default function Details(props){
     )
 }
 
-// super(props);
-//     this.state = {
-//       count: 0
-//     };
-
-//----> turn in to or "refactor"
-
-//     useState
-//     const [count, setCount] = useState(0);
