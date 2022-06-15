@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 export default function Details(props){
     // const [current, setCurrent] = useState({})
     const filmInfo = (
