@@ -36,19 +36,21 @@ const App = () => {
 
   const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const res = await axios.get(popularFilmsUrl)
-  //       // console.log(popularFilmsUrl)
-  //       res = res.data
-  //       setFilms(res.data.results)
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
+//         const response = await axios.get(popularFilmsUrl)
+//         // console.log(popularFilmsUrl)
+//         setFilms(response.data.results)
 
-  //     } catch(error) {
-  //       console.log('api error', error)
-  //     }
-  //   })()
-  // }, [popularFilmsUrl])
+//       } catch(error) {
+//         console.log('api error', error)
+//       }
+
+//     }
+//     fetchData() 
+// }, [])
 
   useEffect(() => {
     
@@ -57,6 +59,7 @@ const App = () => {
       .then(jsonData => {
         setFilms(jsonData.results)
       })
+
   }, [popularFilmsUrl])
 
   const handleDetailsClick = (film) => {
