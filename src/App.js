@@ -5,21 +5,37 @@ import {
 import './App.css';
 import FilmList from './components/FilmList'
 import Details from './components/Details'
+import axios from 'axios'
 import TMDB from './TMDB';
 
 function App() {
-  const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`;
-  const [films, setFilms] = useState([])
-  useEffect(()=>{
-    console.log("useEffect is firing!",popularFilmsUrl)
-    fetch(popularFilmsUrl)
-      .then(response => response.json())
-      .then(jsonData => {
-        console.log(jsonData)
-        setFilms(jsonData.results)
-      })
+  const [films, setFilms] = useState(TMDB.films)
+  
+  // axios/ async method
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+        const response = await axios.get(popularFilmsUrl)
+        setFilms(response.data.results)
+        console.log(response.data)
+      } catch(err){
+        console.warn('API error',err)
+      }
+    }  
+    fetchData()
+  }, []) //make sure this useEffect only runs the first time
+  
+  // useEffect(()=>{
+  //   console.log("useEffect is firing!",popularFilmsUrl)
+  //   fetch(popularFilmsUrl)
+  //     .then(response => response.json())
+  //     .then(jsonData => {
+  //       console.log(jsonData)
+  //       setFilms(jsonData.results)
+  //     })
       
-  },[])
+  // }, [])
   const [current, setCurrent] = useState({})
   function handleDetailsClick(e) {
     console.log('fetching details for', e)
