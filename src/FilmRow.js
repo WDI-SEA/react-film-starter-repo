@@ -1,4 +1,5 @@
 import React , { Component } from 'react'
+import Poster from './Poster'
 
 class FilmRow extends Component {
     render() {  
@@ -7,7 +8,10 @@ class FilmRow extends Component {
         const posterUrl = 'https://image.tmdb.org/t/p/w780/'+this.props.film.poster_path
         return (
             <div className="film-row">
-            <img src={posterUrl} alt="" />
+            <Poster 
+                url={posterUrl}
+                alt={thisTitle}
+            />
 
             <div className="film-summary">
                 <h1>{thisTitle}</h1>
