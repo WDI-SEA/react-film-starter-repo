@@ -4,7 +4,7 @@ import FilmRow from './FilmRow'
 export default class FilmList extends Component {
   render() {
       let allFilms = this.props.films.map((i) => {
-        return <FilmRow film={i}/>
+        return <FilmRow key={i} film={i}/>
       })
     return (
         <div className="film-list">
