@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import FilmRow from './FilmRow'
 
 export default class FilmList extends Component {
      print = () => console.log(this.props.films[0].title)
      const 
      render() {
           const allFilms = this.props.films.map((film, key) => {
-                return (<div className="film-row">
-                              <h1 key={key}>{film.title}</h1>
-                         </div>)
+                return (
+                    <FilmRow film={film} key={key} />
+               )
           })
           return (
                <div className="film-list">
