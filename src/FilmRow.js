@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
-// import Poster, {Component} from './Poster'
+import Poster, {Component} from './Poster'
 
 class FilmRow extends Component{
-    render(){
+    render() {
+        const posterUrl = `https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`
         const date = new Date (this.props.film.release_date).getFullYear()
-        // const releaseDate = date.getFullYear()
         
-
         return (
             <div className="film-row">
-                <img src={`https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`} alt="{this.props.film.title}" />
+                <Poster posterUrl={posterUrl} alt={this.props.title}/>
                 
 
                     <div className="film-summary">
