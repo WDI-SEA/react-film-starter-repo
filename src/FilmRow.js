@@ -1,5 +1,7 @@
 import React, { Component } from 'react' 
 import Poster from "./Poster"
+import Fave from './Fave'
+
 
 class FilmRow extends Component {
     // we want to pass down the filterValue
@@ -16,6 +18,7 @@ class FilmRow extends Component {
                     <h1>{this.props.film.title}</h1>
                     <p>{date}</p>
                 </div>
+                <Fave />
             </div>
     )}
 }
