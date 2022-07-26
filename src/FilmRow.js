@@ -7,10 +7,14 @@ import Fave from './Fave';
 class FilmRow extends Component {
     handleClick = (e) => {
         console.log('Handling Fave Click!')
+        e.stopPropagation()
+    }
+    handleDetailsClick = (film) => {
+        console.log('fetching details for', this.props.film.title)
     }
     render() {
         return (
-            <div className="film-row">
+            <div className="film-row" onClick={this.handleDetailsClick}>
                 <Poster 
                     url={this.props.film.poster_path}
                     title={this.props.film.title}
