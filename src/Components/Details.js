@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TMDB from '../TMDB';
 
 class Details extends Component {
   render() {
@@ -9,7 +8,7 @@ class Details extends Component {
           <h1 className="section-title">DETAILS</h1>
         </div>
       </>
-    );
+    )
   }
 }
 
