@@ -3,7 +3,7 @@ import './App.css';
 import FilmList from './FilmList';
 import Details from './Details';
 import TMDB from './TMDB';
-import FilmRow from './FilmRow';
+// import FilmRow from './FilmRow';
 class App extends Component {
   render() {
     return (
