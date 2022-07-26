@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Poster from './Poster'
+import Fave from './Fave';
 
 class FilmRow extends Component {
     render() {
@@ -12,6 +13,8 @@ class FilmRow extends Component {
                     <h1>{this.props.film.title}</h1>
                     <p>{date}</p>
                 </div>
+                
+                <Fave />
             </div>
         )
     } 
