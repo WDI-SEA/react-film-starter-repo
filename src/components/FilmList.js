@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import FilmRow from './FilmRow'
 
 export default class FilmList extends Component {
+     state = {
+          filter: 'all'
+     }
      print = () => console.log(this.props.films[0].title)
 
      render() {
@@ -10,7 +13,10 @@ export default class FilmList extends Component {
                     <FilmRow film={film} key={key} />
                )
           })
-          const handleFilterClick = (m) => console.log("a filter was clicked to "+m)
+          const handleFilterClick = (m) => {
+               console.log("a filter was clicked to "+m +'and the And the state is '+this.state.filter)
+               this.setState({filter: m})
+          }
           return (
                <div className="film-list">
                     <h1 className="section-title">FILMS</h1>
