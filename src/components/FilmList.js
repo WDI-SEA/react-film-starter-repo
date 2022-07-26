@@ -7,6 +7,7 @@ class FilmList extends Component {
             return (
                 <FilmRow 
                     film={film}
+                    key={i}
                 />
             )
         })  

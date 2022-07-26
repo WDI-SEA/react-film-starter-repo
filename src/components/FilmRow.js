@@ -1,5 +1,6 @@
 import React , { Component } from 'react'
 import Poster from './Poster'
+import Fave from './Fave'
 
 class FilmRow extends Component {
     render() {  
@@ -8,15 +9,18 @@ class FilmRow extends Component {
         const posterUrl = 'https://image.tmdb.org/t/p/w780/'+this.props.film.poster_path
         return (
             <div className="film-row">
-            <Poster 
-                url={posterUrl}
-                alt={thisTitle}
-            />
+                <Poster 
+                    url={posterUrl}
+                    alt={thisTitle}
+                />
 
-            <div className="film-summary">
-                <h1>{thisTitle}</h1>
-                <p>{releaseYear}</p>
-            </div>
+                <div className="film-summary">
+                    <h1>{thisTitle}</h1>
+                    <p>{releaseYear}</p>
+                </div>
+                <Fave 
+                
+                />
             </div>
         );
     }
