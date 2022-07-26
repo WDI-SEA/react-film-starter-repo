@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Details from './Details';
+import FilmList from './FilmList';
 
 class App extends Component {
   render() {
     return (
+      <>
 
-      // haven't had a change to work on this yet
-    );
+      <FilmList />
+      <Details />      
+      
+      </>
+
+
+  
+    )
   }
 }
 
