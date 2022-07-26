@@ -4,7 +4,7 @@ import FilmRow from './FilmRow';
 class FilmList extends Component {
     render() {
         const allFilms = this.props.films.map((film,idx) => {
-            return <FilmRow film={film}/>
+            return <FilmRow key={idx} film={film}/>
             // <h1>{film.title}</h1>
         })
         return (
