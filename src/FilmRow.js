@@ -5,10 +5,6 @@ import Fave from './Fave';
 //const posterURL = 'https://image.tmdb.org/t/p/w780/' + {this.props.film.poster_path}
 
 class FilmRow extends Component {
-    handleClick = (e) => {
-        console.log('Handling Fave Click!')
-        e.stopPropagation()
-    }
     handleDetailsClick = (film) => {
         console.log('fetching details for', this.props.film.title)
     }
@@ -23,9 +19,7 @@ class FilmRow extends Component {
                     <h1>{this.props.film.title}</h1>
                     <p>{this.props.film.release_date.substring(0,4)}</p>
                 </div>
-                <Fave 
-                    onClick={this.handleClick}
-                />
+                <Fave />
             </div>
         );
     }
