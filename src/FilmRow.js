@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
 import Poster from './Poster'
+import Fave from './Fave'
 
 class FilmRow extends Component{
+
+    handleDetailsClick = (film) =>{
+        console.log('Fetching details for', this.props.film.title)
+    }
+
     render(){
         const date = new Date (this.props.film.release_date).getFullYear()
         // const releaseDate = date.getFullYear()
@@ -9,7 +15,7 @@ class FilmRow extends Component{
         const url = `https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`
 
         return (
-            <div className="film-row">  
+            <div className="film-row" onClick={this.handleDetailsClick}>  
         
                 <Poster 
                 url={url}
@@ -20,6 +26,7 @@ class FilmRow extends Component{
                     <h1>{this.props.film.title}</h1>
                     <p>{date}</p>
                 </div>
+                <Fave />
             </div>
         )
     }
