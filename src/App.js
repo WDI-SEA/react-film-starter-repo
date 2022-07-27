@@ -12,7 +12,6 @@ class App extends Component {
       <div className="film-library">       
         <FilmList films={TMDB.films}/>
         <Details films={TMDB.films}/> 
-        {/* <FilmRow />        */}
       </div>
     );
   }

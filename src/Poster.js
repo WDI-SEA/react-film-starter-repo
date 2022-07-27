@@ -1,13 +1,14 @@
-// import React, { Component } from 'react'
+import React, {Component} from 'react'
 
-// class Details extends Component {
-//     render () {
-//         return (
-//             <div className="film-row">
-//             <img src={this.props.url} alt="{this.props.alt} poster image" />
-//             </div>
-//         )
-//     }
-// }  
+class Poster extends Component{
+    render(){
+        return (
+            <>
+            <img src={this.props.url} alt={this.props.alt}
+            />
+            </>
+        )
+    }
+}
 
-// export default Poster
+export default Poster
