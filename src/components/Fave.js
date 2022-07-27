@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Favorite extends Component {
+class Fave extends Component {
 
     state = {
         isFave: false
@@ -9,6 +9,7 @@ class Favorite extends Component {
     handleClick = (e) => {
         e.preventDefault()
         e.stopPropagation()
+        console.log('handling fave click')
         this.setState((prevState)=>{ return {isFave: !prevState.isFave} })
     }
     
@@ -26,4 +27,4 @@ class Favorite extends Component {
     }
 }
 
-export default Favorite
+export default Fave
