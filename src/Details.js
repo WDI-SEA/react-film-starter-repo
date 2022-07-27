@@ -5,7 +5,7 @@ class Details extends Component {
       return(
           <>
           <div className='film-details'>
-              <h1 className='section-title'>Details</h1>
+              <h1 className='section-title'>DETAILS</h1>
           </div>
 
           </>
