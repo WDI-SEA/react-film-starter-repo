@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './../index.css'
 import FilmRow from './FilmRow'
 
 export default class FilmList extends Component {
@@ -21,11 +22,11 @@ export default class FilmList extends Component {
                <div className="film-list">
                     <h1 className="section-title">FILMS</h1>
                     <div className="film-list-filters">
-                         <div className="film-list-filter " onClick={()=> handleFilterClick('all')} > 
+                         <div className={`film-list-filter ${this.state.filter === 'all' ? 'is-active' : ''}`} onClick={()=> handleFilterClick('all')}> 
                               ALL
                               <span className="section-count">{this.props.films.length}</span>
                          </div>
-                         <div className="film-list-filter" onClick={()=> handleFilterClick('faves')}>
+                         <div className={`film-list-filter ${this.state.filter === 'faves' ? 'is-active' : ''}`} onClick={()=> handleFilterClick('faves')}>
                               FAVES
                               <span className="section-count">0</span>
                          </div>
