@@ -11,6 +11,9 @@ class FilmList extends Component {
 
     render() {
 
+        // makes a var with array of processed array info.
+        // each element has <filmrow and key and film passed
+        // then showing all below in Allfilms, but editing on FilmRow
         const allFilms = this.props.films.map((film, idx) =>(
 
                 <FilmRow
@@ -26,7 +29,7 @@ class FilmList extends Component {
 
         <div className="film-list">
             <h1 className="section-title">FILMS</h1>
-            <h1></h1>
+
             {allFilms}
 
             <p>  </p>
