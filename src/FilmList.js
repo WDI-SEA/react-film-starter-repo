@@ -20,6 +20,9 @@ class FilmList extends Component {
                     key ={idx}
                     film = {film}
                 />
+
+
+              
                 
                 
         ) )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FilmPoster from './FilmPoster.js'
 
 
 class FilmRow extends Component {
@@ -11,7 +12,10 @@ class FilmRow extends Component {
             <div className="film-row">
 
 
-                <img src={"https://image.tmdb.org/t/p/w780" + this.props.film.poster_path} alt="" />
+                <FilmPoster
+                    film={this.props.film}
+                 />
+                {/* <img src={"https://image.tmdb.org/t/p/w780" + this.props.film.poster_path} alt="" /> */}
 
 
                 <div className="film-summary">

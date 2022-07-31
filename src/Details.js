@@ -11,7 +11,7 @@ class Details extends Component {
             <div>
             <div className="film-details">
                 <h1 className="section-title">DETAILS</h1>
-                <h1>fsdf</h1>
+                <h1></h1>
             </div>
 
             </div>
