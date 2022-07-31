@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import FilmPoster from './FilmPoster.js'
+import Fave from './Fave.js'
 
 
 class FilmRow extends Component {
@@ -19,6 +20,7 @@ class FilmRow extends Component {
 
 
                 <div className="film-summary">
+                    <Fave />
                     <h1>{this.props.film.title}</h1>
                     <p>{this.props.film.release_date.substr(0,4)}</p>
                 </div>
