@@ -8,9 +8,13 @@ class FilmRow extends Component {
     render() {
         // let posterPath = `"https://image.tmdb.org/t/p/w780${this.props.film.poster_path}"`
 
+        const handleDetailsClick = (film) => {
+            console.log('fetchign dteails');
+        }
+
         return (            
 
-            <div className="film-row">
+            <div className="film-row" onClick={()=>handleDetailsClick('faves')}>
 
 
                 <FilmPoster
