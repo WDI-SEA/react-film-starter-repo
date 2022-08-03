@@ -3,9 +3,11 @@ import Poster from './Poster'
 import Fave from './Fave'
 
 export default class FilmRow extends Component {
+     
      handleDetailsClick = () => {
           console.log("Title: ", this.props.film.title)
      }
+
      render() {
           return (
                <div className="film-row">
