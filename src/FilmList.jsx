@@ -5,7 +5,7 @@ export default class FilmList extends Component {
     render() {
         const allFilms = this.props.films.map((film, i) => {
             return (
-                    <div>
+                    <div key={`filmrow${i}`}>
                         <FilmRow
                             film={film}
                         />
