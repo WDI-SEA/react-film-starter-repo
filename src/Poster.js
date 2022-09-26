@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Poster extends Component {
     render() {
-        return(
+        return (
             <img src={this.props.url} 
                 alt={this.props.alt} 
             />
