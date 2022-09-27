@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Fave from './Fave'
+// import Poster from './Poster'
 
 export default class FilmRow extends Component {
 
