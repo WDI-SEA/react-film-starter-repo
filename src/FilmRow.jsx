@@ -4,7 +4,7 @@ import Fave from './Fave'
 
 export default class FilmRow extends Component {
     handleDetailsClick = film => {
-        console.log('fetching for details for', film)
+        console.log('fetching details for', film.title)
     }
     render() {
         return (
@@ -18,10 +18,11 @@ export default class FilmRow extends Component {
                 />
 
                 <div className='film-summary'>
-                    <Fave />
                     <h1>{this.props.film.title}</h1>
                     <p>{this.props.film.release_date.split('-', 1)}</p>
                 </div>
+
+                <Fave />
             </div>
         )
     }

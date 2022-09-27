@@ -6,10 +6,8 @@ export default class FilmList extends Component {
         filter: 'all'
     }
 
-    handleFilterClick = (e, filter) => {
-        this.setState({
-            filter
-        })
+    handleFilterClick = (filter) => {
+        this.setState({ filter })
     }
 
     render() {
@@ -26,7 +24,7 @@ export default class FilmList extends Component {
                 <div className='film-list-filters'>
                     <div
                         className={`film-list-filter${this.state.filter === 'all' ? ' is-active' : ''}`}
-                        onClick={(e) => this.handleFilterClick(e, 'all')}
+                        onClick={() => this.handleFilterClick('all')}
                     >
                         ALL
                         <span className='section-count'>{this.props.films.length}</span>
@@ -34,7 +32,7 @@ export default class FilmList extends Component {
 
                     <div
                         className={`film-list-filter${this.state.filter === 'faves' ? ' is-active' : ''}`}
-                        onClick={(e) => this.handleFilterClick(e, 'faves')}
+                        onClick={() => this.handleFilterClick('faves')}
                     >
                         FAVES
                         <span className='section-count'>0</span>
