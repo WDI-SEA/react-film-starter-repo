@@ -8,7 +8,8 @@ export default class FilmList extends Component {
     }
     
     
-    handleFilterClick = (filter) => {
+    handleFilterClick = filter => {
+        console.log('handling filter click:', filter)
         this.setState({ filter: filter })
     }
 

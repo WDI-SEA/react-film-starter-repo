@@ -7,10 +7,10 @@ export default class Fave extends Component {
     }
 
     handleClick = (e) => {
-
+        //this is on the inner click event, we won't trigger the out click event the "handleDetailsClick" event
         e.stopPropagation()
-        console.log('testing')
-        this.setState((prevState) => {
+        console.log('fave clicked!')
+        this.setState(prevState => {
             return {
                 isFave: !prevState.isFave
             }

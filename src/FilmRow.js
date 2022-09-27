@@ -4,15 +4,15 @@ import Fave from './Fave'
 
 
 export default class FilmRow extends Component {
-    handleDetailsClick = (film) => {
-        console.log(`fetching details for ${film}`)
+    handleDetailsClick = film => {
+        console.log('fetching details for:', film.title)
     }
 
     render() {
         // const posterUrl = `https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`
 
         return (
-            <div className="film-row" key={`film-${this.props.index}`} onClick={()=>this.handleDetailsClick(this.props.film.title)}>
+            <div className="film-row" key={`film-${this.props.index}`} onClick={()=>this.handleDetailsClick(this.props.film)}>
                 <Poster 
                     film={this.props.film}
                     posterUrl={this.props.film.poster_path}
