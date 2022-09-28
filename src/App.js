@@ -8,7 +8,6 @@ function App() {
   const [current, setCurrent] = useState({})
 
   const handleDetailsClick = film => {
-    console.log('fetching details for', film.title)
     setCurrent(film)
 }
 

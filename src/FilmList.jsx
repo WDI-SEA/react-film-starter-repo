@@ -13,14 +13,14 @@ export default function FilmList(props) {
         let newFaves = faves.slice()
         const filmIndex = newFaves.indexOf(film)
         if (filmIndex >= 0) {
-            console.log('removing from faves', film)
             newFaves.splice(filmIndex, 1)
         } else {
-            console.log('adding to faves', film)
             newFaves.push(film)
         }
         setFaves(newFaves)
     }
+
+    const filmsToDisplay = filter === 'all' ? props.films : faves
 
     return (
         <div className='film-list'>
@@ -44,7 +44,7 @@ export default function FilmList(props) {
                 </div>
             </div>
 
-            {props.films.map((film, i) => {
+            {filmsToDisplay.map((film, i) => {
                 return (
                     <FilmRow
                         film={film}
