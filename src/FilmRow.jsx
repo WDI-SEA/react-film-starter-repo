@@ -21,7 +21,10 @@ export default function FilmRow(props) {
                 <p>{props.film.release_date.split('-', 1)}</p>
             </div>
 
-            <Fave />
+            <Fave
+                onFaveToggle={() => props.onFaveToggle(props.film)}
+                isFave={props.isFave}    
+            />
         </div>
     )
 }
