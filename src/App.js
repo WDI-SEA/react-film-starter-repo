@@ -7,9 +7,17 @@ function App() {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
 
+  const handleDetailsClick = film => {
+    console.log('fetching details for', film.title)
+    setCurrent(film)
+}
+
   return (
     <div className='film-library'>
-      <FilmList films={films} />
+      <FilmList
+        films={films}
+        handleDetailsClick={handleDetailsClick}
+      />
 
       <Details film={current} />
     </div>

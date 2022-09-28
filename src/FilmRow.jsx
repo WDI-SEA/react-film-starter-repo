@@ -2,14 +2,11 @@ import Poster from './Poster'
 import Fave from './Fave'
 
 export default function FilmRow(props) {
-    const handleDetailsClick = film => {
-        console.log('fetching details for', film.title)
-    }
 
     return (
         <div
             className='film-row'
-            onClick={() => handleDetailsClick(props.film)}
+            onClick={() => props.handleDetailsClick(props.film)}
         >
             <Poster
                 posterPath={props.film.poster_path}
