@@ -1,29 +1,27 @@
-import React, { Component } from 'react'
 import Poster from './Poster'
 import Fave from './Fave'
 
-export default class FilmRow extends Component {
-    handleDetailsClick = film => {
+export default function FilmRow(props) {
+    const handleDetailsClick = film => {
         console.log('fetching details for', film.title)
     }
-    render() {
-        return (
-            <div
-                className='film-row'
-                onClick={() => this.handleDetailsClick(this.props.film)}
-            >
-                <Poster
-                    posterPath={this.props.film.poster_path}
-                    title={this.props.film.title}
-                />
 
-                <div className='film-summary'>
-                    <h1>{this.props.film.title}</h1>
-                    <p>{this.props.film.release_date.split('-', 1)}</p>
-                </div>
+    return (
+        <div
+            className='film-row'
+            onClick={() => handleDetailsClick(props.film)}
+        >
+            <Poster
+                posterPath={props.film.poster_path}
+                title={props.film.title}
+            />
 
-                <Fave />
+            <div className='film-summary'>
+                <h1>{props.film.title}</h1>
+                <p>{props.film.release_date.split('-', 1)}</p>
             </div>
-        )
-    }
+
+            <Fave />
+        </div>
+    )
 }
