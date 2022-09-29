@@ -11,17 +11,24 @@ export default function App() {
   const [current, setCurrent] = useState({})
   const [films, setFilms] = useState(TMDB.films)
 
+  const handleDetailsClick = (film) => {
+    console.log('Fetching details for', film.title)
+    
+  }
+
   return (
     <div className='App'>
         <div className='film-library'>
             <FilmList 
               films={films}
               setFilms={setFilms}
+              handleDetailsClick={handleDetailsClick}
             />
 
             <Details
               film={current}
               setCurrent={setCurrent}
+              handleDetailsClick={handleDetailsClick}
             />
         </div>
 

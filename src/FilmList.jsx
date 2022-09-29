@@ -12,6 +12,22 @@ export default function FilmList(props) {
         setFilter(filter)
     }
 
+    const handleFaveToggle = (film) => {
+        console.log('Handling fave toggle!')
+        let newFaves = [...faves]
+        const filmIndex = newFaves.indexOf(film)
+        if (filmIndex === -1) {
+            console.log(`Adding ${film.title} to faves...`)
+            newFaves = [...newFaves, film]
+        } else {
+            console.log(`Removing ${film.title} from faves...`)
+            newFaves.splice(filmIndex, 1)
+        }
+        setFaves(newFaves)
+    }
+
+    const filmsToDisplay = filter=== "all" ? props.films : faves;
+
     return (
         <div className="film-list">
             <h1 className="section-title">FILMS</h1>
@@ -26,15 +42,19 @@ export default function FilmList(props) {
                     handleFilterClick("faves")
                 }}>
                     FAVES
-                    <span className='section-count'>0</span>    
+                    <span className='section-count'>{faves.length}</span>    
                 </div>    
             </div>
 
-            {props.films.map((film, i) => {
+            
+            {filmsToDisplay.map((film, i) => {
                 return (
-                        <div key={`filmrow${i}`}>
+                        <div>
                             <FilmRow
                                 film={film}
+                                key={`filmrow${i}`}
+                                onFaveToggle={handleFaveToggle}
+                                isFave={faves.includes(film)} 
                             />
                         </div>
                     )

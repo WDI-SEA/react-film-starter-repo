@@ -1,16 +1,19 @@
 // import React, { Component } from 'react'
 import Fave from './Fave'
+import { useState } from 'react'
 // import Poster from './Poster'
 
 
 export default function FilmRow(props) {
 
-    const handleDetailsClick = (film) => {
-        console.log('Fetching details for', film.title)
-    }
+    const [isFave, setIsFave] = useState(false)
+
+    // const handleDetailsClick = (film) => {
+    //     console.log('Fetching details for', film.title)
+    // }
 
     return (
-        <div className='film-row' onClick={() => handleDetailsClick(props.film)}>
+        <div className='film-row' onClick={() => props.handleDetailsClick(props.film)}>
             <img src={'https://image.tmdb.org/t/p/w780/'+ props.film.poster_path} alt={props.film.title} />
 
             <div className="film-summary">
@@ -18,7 +21,11 @@ export default function FilmRow(props) {
                 <p>Year: {props.film.release_date.split('-')[0]}</p>
             </div>
 
-            <Fave />
+            <Fave
+            onFaveToggle={() => {props.onFaveToggle(props.film)}}
+            isFave={props.isFave}
+            setIsFave={setIsFave}
+            />
         </div>        
     )
 }
