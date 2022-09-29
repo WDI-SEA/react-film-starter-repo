@@ -12,13 +12,13 @@ export default function FilmRow(props) {
             onClick={()=>props.handleDetailsClick(props.film)}
         >
         <Poster 
-            film={props.film}
-            posterUrl={props.film.poster_path}
+            poster_path={props.film.poster_path}
+            title={props.film.title}
         />
 
         <div className="film-summary">
             <h1>{props.film.title}</h1>
-                <p>{props.film.release_date.split('-')[0]}</p>
+                <p>{props.film.release_date.substring(0,4)}</p>
         </div>
 
         <Fave 

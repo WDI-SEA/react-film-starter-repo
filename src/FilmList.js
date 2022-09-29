@@ -6,7 +6,7 @@ import FilmRow from './FilmRow'
 export default function FilmList(props) {
 
     const [filter, setFilter] = useState('all')
-    const[faves, setFaves] = useState({})
+    const[faves, setFaves] = useState([])
 
     const handleFilterClick = filter => {
         setFilter(filter)}
@@ -18,7 +18,7 @@ export default function FilmList(props) {
         //if the filmIndex is less than 0, we need to add the film to the newFaves, otherwise we would need to remove the film from the newFaves array
         if (filmIndex < 0) {
             console.log(`Adding ${film.title} to the newFaves`)
-            setFaves(...newFaves, film)
+            setFaves([...newFaves, film])
         } else {
             console.log(`REMOVING ${film.title} from the newFaves`)
             // .splice(where to start splicing, how many to splice)

@@ -3,8 +3,9 @@ import {useState} from 'react'
 
 export default function Poster(props) {
     return (
-        <img src={`https://image.tmdb.org/t/p/w780/${props.film.poster_path}`} alt={props.film.title} />
-
+        <img 
+            src={`https://image.tmdb.org/t/p/w780/${props.poster_path}`} alt={`${props.title}'s movie poster`} 
+        />
     )
 }
 
