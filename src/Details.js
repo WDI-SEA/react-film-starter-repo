@@ -27,7 +27,7 @@ function Details (props) {
         </div>
       )    
 
-      let details = props.film.id ? filmInfo : emptyInfo
+    let details = props.film.id ? filmInfo : emptyInfo
 
     return (
         <div className="film-details">

@@ -7,7 +7,7 @@ function FilmList(props) {
     const [faves, setFaves] = useState([])
  
     const handleFilterClick = (type) => {
-        console.log(`a ${type} was clicked`)
+        // console.log(`a ${type} was clicked`)
         setFilter(type)
     }
 
@@ -15,10 +15,10 @@ function FilmList(props) {
         let newFaves = [...faves]
         const filmIdx = newFaves.indexOf(film)
         if (filmIdx < 0) {
-            console.log(`adding ${film.title} to faves`)
+            // console.log(`adding ${film.title} to faves`)
             newFaves = [...newFaves, film]
         } else {
-            console.log(`removing ${film.title} from faves`)
+            // console.log(`removing ${film.title} from faves`)
             newFaves.splice(filmIdx, 1)
         }
         setFaves(newFaves)
