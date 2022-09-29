@@ -1,13 +1,7 @@
-import React, { Component } from "react";
-
-class Poster extends Component {
-    render() {
-        return (
-            <img src={this.props.url} 
-                alt={this.props.alt} 
-            />
-        );
-    }
+function Poster(props) {
+    return (
+        <img src={props.url} alt={props.alt} />
+    );
 }
 
 export default Poster;
