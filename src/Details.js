@@ -1,4 +1,3 @@
-import { useState } from "react"
 export default function Details(props) {
     const filmInfo = (
         <div className="film-detail is-hydrated">

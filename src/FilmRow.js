@@ -3,10 +3,6 @@ import Fave from './Fave'
 
 export default function FilmRow(props) {
    
-
-    const handleDetailsClick = (film) => {
-        console.log(`${film} details!`)
-    }
     return(    
         <div className="film-row" onClick={()=>props.handleDetailsClick(props.film)}>
 

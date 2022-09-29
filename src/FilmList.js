@@ -4,7 +4,6 @@ import { useState } from 'react'
 export default function FilmList(props) {
     const [filter, setFilter] = useState('all')
     const [faves, setFaves] = useState([])
-    const [isFave, setIsFave] = useState(false)
 
     const handleFilterClick = (filter)=> {
         setFilter(filter)
@@ -24,13 +23,14 @@ export default function FilmList(props) {
     }
     const filmsToDisplay = filter === 'all' ? props.films : faves
 
-    const allFilms = props.films.map((film, i)=>{
+    const allFilms = filmsToDisplay.map((film, i)=>{
             return (
             <FilmRow 
                 key={`filmrow${i}`} 
                 film={film} 
-                isFave={isFave}
                 onFaveToggle={handleFaveToggle}
+                isFave={faves.includes(film)}
+                handleDetailsClick={props.handleDetailsClick}
             />
         )
     })
