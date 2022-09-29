@@ -6,11 +6,17 @@ import TMDB from "./TMDB";
 
 export default function App() {
   const [films] = useState(TMDB.films)
-  const [current] = useState({});
+  const [current, setCurrent] = useState({});
+
+    const handleDetailsClick = film => {
+        console.log(`info for ${film.title}`);
+        setCurrent(film);
+    }
     return (
     <div className="App">
       <div className="film-library">
-        <FilmList films={films} />
+        <FilmList films={films}
+         handleDetailsClick={handleDetailsClick}/>
         <Details films={current} />
       </div>
     </div>

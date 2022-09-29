@@ -3,8 +3,11 @@ import FilmRow from "./FilmRow";
 
 export default function FilmList(props) {
     const [filter, setFilter] = useState("all");
+
     const [faves, setFaves] = useState([])
+
     const handleFilterClick = filter => setFilter(filter);
+
     const handleFaveToggle = film => {
       const filmIndex = faves.indexOf(film);
       if (filmIndex === -1) {
@@ -18,13 +21,16 @@ export default function FilmList(props) {
           setFaves(newFaves);
       }
   }
-    const allFilms = props.films.map((film, index) => {
+    const filmsToDisplay = filter === "all" ? props.films : faves;
+    const allFilms = filmsToDisplay.map((film, index) => {
+      
         return (
             <FilmRow 
                 film={film}
                 key={`film-${index}`}
                 onFaveToggle={handleFaveToggle}
                 isFave={faves.includes(film)}
+                handleDetailsClick = {props.handleDetailsClick}
             />
         );
     })
