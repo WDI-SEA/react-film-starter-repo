@@ -5,7 +5,7 @@ import Details from "./Details";
 import TMDB from "./TMDB";
 
 export default function App() {
-  const [films] = useState(TMDB.films)
+  const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({});
 
     const handleDetailsClick = film => {
@@ -15,9 +15,16 @@ export default function App() {
     return (
     <div className="App">
       <div className="film-library">
-        <FilmList films={films}
+        
+        <FilmList 
+         films={films}
          handleDetailsClick={handleDetailsClick}/>
-        <Details films={current} />
+
+        <Details 
+        films={TMDB.films}
+
+        film={current} />
+
       </div>
     </div>
   );
