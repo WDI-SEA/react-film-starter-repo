@@ -8,10 +8,10 @@ export default function Fave(props){
 
     const handleClick = (e) =>  {
         e.stopPropagation()
-        setState(!isFave)
+        setIsFave(!isFave)
     }
 
-    const action = state.isFave?'remove_from_queue':'add_to_queue'
+    const action = isFave?'remove_from_queue':'add_to_queue'
     
     return(
         <div 
