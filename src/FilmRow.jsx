@@ -6,7 +6,7 @@ export default function FilmRow(props) {
     //     console.log('Fetching details for', film.title)
     // }
         return(
-            <div className="film-row" onClick={props.handleDetailsClick(props.film)}>
+            <div className="film-row" onClick={()=> props.handleDetailsClick(props.film)}>
                 <Poster 
                 poster_url={props.poster_url}
                 title={props.film.title}/>
