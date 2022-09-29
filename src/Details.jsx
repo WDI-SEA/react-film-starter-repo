@@ -12,6 +12,7 @@ export default function Details(props) {
           <img src={`https://image.tmdb.org/t/p/w780/${props.film.poster_path}`} className="film-detail-poster" alt={props.film.title} />
           {props.film.overview}
         </p>
+        <p>{props.isFave ? 'Favorited ⭐' : ''}</p>
       </div>
     </div>
   )
