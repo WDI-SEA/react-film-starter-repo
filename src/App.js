@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
+import FilmList from "./FilmList";
+import Details from "./Details";
+import TMDB from "./TMDB";
 
-class App extends Component {
-  render() {
+export default function App() {
+  const [films] = useState(TMDB.films)
+  const [current] = useState({});
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div className="App">
+      <div className="film-library">
+        <FilmList films={films} />
+        <Details films={current} />
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default App;
