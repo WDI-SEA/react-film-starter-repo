@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+
 import './App.css';
 import FilmList from './FilmList';
 import Details from "./Details"
 import TMDB from "./TMDB"
 // import Poster from "./Poster"
 
-class App extends Component {
-  render() {
+function App (props) {
     return (
       <div className="film-library">
        <FilmList 
@@ -18,6 +17,5 @@ class App extends Component {
      
     )
   }
-}
 
-export default App;
+export default App
