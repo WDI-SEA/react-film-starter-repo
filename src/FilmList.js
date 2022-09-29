@@ -18,13 +18,15 @@ function FilmList(props) {
             setFaves(newFaves);
         }
     }
-    const allFilms = props.films.map((film, index) => {
+    const filmsToDisplay = filter === "all" ? props.films : faves;
+    const allFilms = filmsToDisplay.map((film, index) => {
         return (
             <FilmRow 
                 film={film}
                 key={`film-${index}`}
                 onFaveToggle={handleFaveToggle}
                 isFave={faves.includes(film)}
+                handleDetailsClick={props.handleDetailsClick}
             />
         );
     })
