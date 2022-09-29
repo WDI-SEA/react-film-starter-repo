@@ -3,14 +3,12 @@ import Poster from './Poster'
 
 export default function FilmRow(props) {
     
-    const handleDetailsClick = film => {
-        console.log(film)
-    }
+
 
     return(
         <div 
             className="film-row" 
-            onClick={() => handleDetailsClick(props.film)}
+            onClick={() => props.handleDetailsClick(props.film)}
         >
             
             <Poster 
@@ -25,7 +23,10 @@ export default function FilmRow(props) {
                 <p>{props.film.release_date.substring(0,4)}</p>
             </div>
 
-            <Fave />
+            <Fave 
+                onFaveToggle={() => {props.onFaveToggle(props.film)}}
+                isFave={props.isFave}
+            />
         </div> 
     )
 }
