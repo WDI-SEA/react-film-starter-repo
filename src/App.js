@@ -12,7 +12,10 @@ export default function App(){
 
   const handleDetailsClick = film => {
     console.log('fetching details for film:', film.title)
+    setCurrent(film)
+
   }
+  
   return (
     <div className="film-library">
       <FilmList films={films} handleDetailsClick={handleDetailsClick} />

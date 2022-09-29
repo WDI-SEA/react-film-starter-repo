@@ -2,10 +2,12 @@ import Poster from './Poster'
 import Fave from './Fave'
 
 export default function FilmRow(props){
-
+    
         return (
         <div className='film-row'
-        onClick={() => props.handleDetailsClick(props.film)}
+        onClick={() => {
+            console.log( props.onFaveToggle)
+            props.handleDetailsClick(props.film)}}
         >
             <Poster 
                 poster_path={props.film.poster_path}
