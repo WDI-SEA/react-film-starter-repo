@@ -49,12 +49,13 @@ export default function FilmList(props) {
             
             {filmsToDisplay.map((film, i) => {
                 return (
-                        <div>
+                        <div key={`filmrow${i}`}>
                             <FilmRow
                                 film={film}
-                                key={`filmrow${i}`}
+                                // key={`filmrow${i}`}
                                 onFaveToggle={handleFaveToggle}
-                                isFave={faves.includes(film)} 
+                                isFave={faves.includes(film)}
+                                handleDetailsClick={() => props.handleDetailsClick(film)} 
                             />
                         </div>
                     )

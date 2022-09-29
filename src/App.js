@@ -13,6 +13,7 @@ export default function App() {
 
   const handleDetailsClick = (film) => {
     console.log('Fetching details for', film.title)
+    setCurrent(film)
     
   }
 
