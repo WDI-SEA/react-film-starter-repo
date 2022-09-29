@@ -4,13 +4,16 @@ import Details from './Details'
 import TMDB from './TMDB';
 import { useState } from 'react'
 
+// refactoring for a function
 function App() {
+  // setting new constants
   const [films, setFilms] = useState(TMDB.films)
-  const [current, setCurrent] = useState({})
+  const [thisFilm, setThisFilm] = useState({})
 
+  // using set
   const handleDetailsClick = (film) => {
-    console.log(`fetching details for ${film.title}`)
-    setCurrent(film)
+    console.log(`getting info ${film.title}`)
+    setThisFilm(film)
   }
   return (
     <div className="film-library">
@@ -19,7 +22,7 @@ function App() {
         handleDetailsClick={handleDetailsClick}
       />
       <Details
-        film={current}
+        film={thisFilm}
       />
     </div>
 

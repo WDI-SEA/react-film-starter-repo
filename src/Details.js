@@ -1,4 +1,5 @@
 function Details (props) {
+    
     const filmInfo = (
         <div className="film-detail is-hydrated">
           <figure className="film-backdrop">
