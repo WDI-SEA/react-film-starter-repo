@@ -6,12 +6,16 @@ export default function FilmList(props) {
     const [faves, setFaves] = useState([])
 
     const handleFilterClick = (filter) => {
+        console.log('handling filter click', filter)
         setFilter(filter)
     }
 
     const handleFaveToggle = film => {
+        // faves is calling the initial state.
         let newFaves = [...faves];
+        // search the newfaves in index of films
         const filmIndex = newFaves.indexOf(film);
+        // if filmindex is less than 0 we need to add the film to newfaves otherwise we would need to remove the film from the newFaves array
         if (filmIndex < 0) {
           console.log(`ADDING ${film.title} TO FAVES`)
           newFaves = [...newFaves, film];
@@ -22,6 +26,9 @@ export default function FilmList(props) {
         setFaves(newFaves)
     }
 
+    // TURNERY
+    /// if X === Y ? 1stOption : 2ndOption
+    // shows all films or faves when clicked category tab
     const filmsToDisplay = filter === 'all' ? props.films : faves
 
     return (

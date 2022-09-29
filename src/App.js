@@ -9,6 +9,7 @@ export default function App(props) {
 
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
+  // films (list of files) -- current is details right side.. start empty
 
   const handleDetailsClick = film => {
     setCurrent(film)

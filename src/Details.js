@@ -16,18 +16,18 @@ export default function Details(props){
             </p>
           </div>
         </div>
-      )
+    )
       
-      const emptyInfo = (
-        <div className="film-detail">
-          <p>
-            <i className="material-icons">subscriptions</i>
-            <span>No film selected</span>
-          </p>
-        </div>
-      )
+    const emptyInfo = (
+      <div className="film-detail">
+        <p>
+          <i className="material-icons">subscriptions</i>
+          <span>No film selected</span>
+        </p>
+      </div>
+    )
 
-        let details = props.film.id ? filmInfo : emptyInfo
+    const details = props.film.id ? filmInfo : emptyInfo
 
     return (
         <div className="film-details">
