@@ -3,18 +3,25 @@ import './App.css';
 import FilmList from './FilmList';
 import Details from './Details';
 import TMDB from './TMDB';
+import { useState } from 'react'
 
 
 export default function App() {
+
+  const [current, setCurrent] = useState({})
+  const [films, setFilms] = useState(TMDB.films)
+
   return (
     <div className='App'>
         <div className='film-library'>
             <FilmList 
-              films={TMDB.films}
+              films={films}
+              setFilms={setFilms}
             />
 
             <Details
-              films={TMDB.films}
+              film={current}
+              setCurrent={setCurrent}
             />
         </div>
 
