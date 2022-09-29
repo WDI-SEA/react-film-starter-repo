@@ -7,11 +7,19 @@ import { useState } from 'react';
 export default function App(){
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
-
+  const handleDetailsClick = (film) => {
+    console.log('Fetching details for', film.title)
+    setCurrent(film)
+}
     return (
       <div className="film-library">
-        <FilmList films={films} setFilms={setFilms}/>
-        <Details film={current} setCurrent={setCurrent}/>
+        <FilmList 
+        films={films} 
+        setFilms={setFilms}
+        handleDetailsClick={handleDetailsClick}/>
+        <Details 
+        film={current} 
+        setCurrent={setCurrent}/>
       </div>
     );
   }

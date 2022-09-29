@@ -22,17 +22,22 @@ export default function FilmList(props){
       }
       setFaves(newFaves)
     }
+    const filmsToDisplay = filter=== "all" ? props.films : faves;
 
-    const allFilms = props.films.map((film,i)=> {
+    const allFilms = filmsToDisplay.map((film,i)=> {
             return(
                 <FilmRow 
                 film={film}
                 key={`filmrow${i}`}
                 poster_url={film.poster_path}
                 onFaveToggle={handleFaveToggle}
-                isFave={faves.includes(film)}/>
+                isFave={faves.includes(film)}
+                handleFilterClick={props.handleFilterClick}/>
             )
         })
+    
+
+    // const allFilms = filmsToDisplay.map((film, i) => { .... })
         return(
             <div className="film-list">
               <h1 className="section-title">FILMS</h1>
