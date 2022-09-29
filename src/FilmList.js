@@ -1,22 +1,18 @@
-import React, {Component} from 'react'
 import FilmRow from './FilmRow'
+import {useState} from 'react'
 
-export default class FilmList extends Component {
+export default function FilmList(props) {
 
-    state = {
-        filter: 'All'
-    }
+    const [filter, setFilter] = useState('All')
+
     
-    handleFilterClick = filter => {
-        this.setState({
-            filter:filter
-        })
-        console.log(`a filter ${this.state.filter} was clicked`)
+    const handleFilterClick = filter => {
+        setFilter({filter:filter})
+
+        console.log(`a filter ${filter} was clicked`)
     }
 
-
-    render() {
-        const films = this.props.films.map((movie, i) => {
+        const films = props.films.map((movie, i) => {
             return <FilmRow key={`FilmRowKey${i}`} film={movie}/>
         })
 
@@ -25,11 +21,11 @@ export default class FilmList extends Component {
             <div className="film-list">
                 <h1 className="section-title">FILMS</h1>
                 <div className="film-list-filters">
-                    <div className={`film-list-filter ${this.state.filter === 'All' ? 'is-active' : ''} `} onClick={() => {this.handleFilterClick('All')}}>
+                    <div className={`film-list-filter ${filter === 'All' ? 'is-active' : ''} `} onClick={() => {handleFilterClick('All')}}>
                         ALL
-                        <span className="section-count">{this.props.films.length}</span>
+                        <span className="section-count">{props.films.length}</span>
                     </div>
-                    <div className={`film-list-filter ${this.state.filter === 'Faves' ? 'is-active' : ''} `} onClick={() => {this.handleFilterClick('Faves')}}>
+                    <div className={`film-list-filter ${filter === 'Faves' ? 'is-active' : ''} `} onClick={() => {handleFilterClick('Faves')}}>
                         FAVES
                         <span className="section-count">0</span>
                     </div>
@@ -39,4 +35,3 @@ export default class FilmList extends Component {
 
         )
     }
-}
