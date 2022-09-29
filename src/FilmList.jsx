@@ -14,10 +14,12 @@ function FilmList (props){
     const handleFaveToggle = (film)=>{
         let newFaves= [...faves]
         const filmIndex = newFaves.indexOf(film)
+        // index will return a value of -1 if the item is not in the array
         if(filmIndex <0) {
             newFaves= [...newFaves, film]
         }else{
-            newFaves.splice(filmIndex,1)
+            // if film is in the array, index will return a value starting at 0
+            newFaves.splice(filmIndex,1) //-> (where you want to start the splice,  how many to remove)
         }
         setFaves(newFaves)
     }
@@ -40,20 +42,24 @@ function FilmList (props){
             <h1 className="section-title">FILMS</h1>
                 <div className="film-list-filters" >
 
+                    {/* all films */}
                     <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} onClick={() => {handleFilterClick("all")}}>
-                                ALL
+                            ALL
                         <span className="section-count">{props.films.length}</span>
                     </div>
-                            
+
+                    {/* Fave films */}
                     <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={()=>{handleFilterClick("faves")
                     }}>
-                            FAVES
+                        FAVES
                     <span className="section-count">{faves.length}</span>
                     </div>
+                
                 </div>
-            {console.log(allFilms)}
+            {/* {console.log(allFilms)} */}
             {allFilms}
         </div>
             
     )}
+    
 export default FilmList

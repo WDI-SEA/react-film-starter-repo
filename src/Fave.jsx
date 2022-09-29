@@ -1,8 +1,6 @@
-import  { useState } from "react"
 
 function Fave (props){
-    // const [isFave, setIsFave] = useState(false)
-
+    // const [isFave, setIsFave]= useState(false)
 
     const handleClick = (e) =>{
         e.stopPropagation()

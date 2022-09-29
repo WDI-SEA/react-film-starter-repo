@@ -2,14 +2,11 @@ import Poster from "./Poster";
 import Fave from "./Fave";
 
 function FilmRow (props){
-
-    const handleDetailsClick= (film)=>{
-        console.log(`Fetching details for" ${props.film.title}`)
-    }
+    
         const date = new Date(props.film.release_date)
         return(
             <div className="film-row" 
-                onClick={()=> handleDetailsClick(props.film)}
+                onClick={()=>props.handleDetailsClick(props.film)}
                 >
                 <Poster
                     poster_path={props.film.poster_path}
@@ -23,6 +20,7 @@ function FilmRow (props){
 
                 <Fave 
                     onFaveToggle={()=>{props.onFaveToggle(props.film)}}
+                    isFave = {props.isFave}
                 />
             
 
