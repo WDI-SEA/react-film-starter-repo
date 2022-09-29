@@ -3,7 +3,8 @@ import FilmRow from "./FilmRow"
 
 
 function FilmList (props){
-    const [filter, setFilter] = useState("all")
+    const [filter, setFilter] = useState("all") 
+    const [faves, setFaves] =useState([])
 
     const handleFilterClick = (filter) =>{
         // console.log("click")

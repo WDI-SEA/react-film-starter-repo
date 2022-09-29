@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import './App.css';
 import FilmList from './FilmList';
 import Details from "./Details"
@@ -6,13 +6,16 @@ import TMDB from "./TMDB"
 // import Poster from "./Poster"
 
 function App (props) {
+  const [films, setFilms] = useState(TMDB.films)
+  const [current, setCurrent] =useState({})
     return (
       <div className="film-library">
        <FilmList 
-        films={TMDB.films}
+        films={films}
         />
        <Details
-        films={TMDB.films} />
+        film ={current}
+        />
       </div>
      
     )
