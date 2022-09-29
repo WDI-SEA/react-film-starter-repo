@@ -28,11 +28,11 @@ function FilmList(props) {
 
     const handleFilterClick = (filter) => {
         console.log(filter)
-        setFilter({filter})
+        setFilter(filter)
         
     }
 
-    const filmsToDisplay = filter === "all" ? props.films: faves;
+    const filmsToDisplay = filter === "all" ? props.films : faves;
 
     const allFilms = filmsToDisplay.map((film, i) => {
         return (
@@ -50,7 +50,7 @@ function FilmList(props) {
             <div className="film-list">
                 <h1 className="section-title">FILMS</h1>
                 <div className="film-list-filters">
-                    <div className={`film-list-filter ${filter === "all" ? "is-active": ""}`}
+                    <div className={`film-list-filter ${filter === "all" ? "is-active" : ""}`}
                          onClick={ () => handleFilterClick("all")}
                     >
                         ALL
