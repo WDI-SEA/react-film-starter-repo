@@ -1,26 +1,22 @@
 // import React, { Component } from 'react'
-import { useState } from 'react'
+// import { useState } from 'react'
 
-export default function Fave(props){
-    
-    const [isFave, setIsFave] = useState(false)
-    // const [isGabe, setIsGabe] = useState(true)
+export default function Fave(props) {
 
-    const handleClick = (e) =>  {
+    const handleClick = e => {
         e.stopPropagation()
-        setIsFave(!isFave)
+        props.onFaveToggle()
     }
 
-    const action = isFave?'remove_from_queue':'add_to_queue'
-    
-    return(
-        <div 
-            className={`film-row-fave ${action}`}
-                onClick={handleClick}
-        >
-            <p className="material-icons">add_to_queue</p>
-        </div>
 
-    )
+    const action = props.isFave ? 'remove_from_queue' : 'add_to_queue'
     
+    return (
+        <div
+            className={`film-row-fave ${action}`}
+            onClick={handleClick}
+        >
+            <p className='material-icons'>{action}</p>
+        </div>
+    )
 }
