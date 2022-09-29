@@ -1,7 +1,7 @@
-
+require('dotenv').config()
 
 const TMDB = {
-  api_key: '<REPLACE_THIS_WITH_TMDB_API_KEY>',
+  api_key: process.env.REACT_APP_TMDB_API_KEY,
   films: [
     {
       "id": 346364,

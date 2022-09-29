@@ -2,9 +2,6 @@ import Poster from './Poster'
 import Fave from './Fave'
 
 export default function FilmRow(props) {
-
-    
-
     const date = new Date(props.film.release_date)
     return (
         <div className="film-row" onClick={() => props.handleDetailsClick(props.film)}>

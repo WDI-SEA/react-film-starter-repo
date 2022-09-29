@@ -23,13 +23,11 @@ export default function FilmList(props) {
                 ...faves, 
                 film
             ])
-            // newFaves = [...newFaves, film]
         } else if(filmIndex >= 0) {
             console.log(`removing ${film.title} from faves...`)
             newFaves.splice(filmIndex, 1)
             setFaves(newFaves)
         }
-        // setFaves(newFaves)
     }
 
     const filmsToDisplay = filterState.filter === "all" ? props.films: faves;
