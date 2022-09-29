@@ -9,7 +9,7 @@ export default function App(){
   const [current, setCurrent] = useState({})
   const handleDetailsClick = (film) => {
     console.log('Fetching details for', film.title)
-    setCurrent(film)
+    setCurrent([film])
 }
     return (
       <div className="film-library">
@@ -19,7 +19,7 @@ export default function App(){
         handleDetailsClick={handleDetailsClick}/>
         <Details 
         film={current} 
-        setCurrent={setCurrent}/>
+        />
       </div>
     );
   }

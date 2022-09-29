@@ -3,9 +3,9 @@ export default function Fave(props) {
 
     const [isFave, setIsFave] = useState(false)
 
-    const handleClick = (e)=> {
-        console.log('handling Fave Click!')
+    const handleClick = e=> {
         e.stopPropagation()
+        console.log('handling Fave Click!')
         props.onFaveToggle()
     }
 

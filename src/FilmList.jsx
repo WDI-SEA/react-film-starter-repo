@@ -7,10 +7,11 @@ export default function FilmList(props){
     const [filter, setFilter] = useState('all')
 
     const handleFilterClick = (filter) => {
-      setFilter(filter)  
+      setFilter([filter])  
     }
 
-    const handleFaveToggle = (film) => {
+    const handleFaveToggle = film => {
+      
       let newFaves = [...faves];
       const filmIndex = newFaves.indexOf(film);
       if (filmIndex < 0) {
@@ -18,14 +19,14 @@ export default function FilmList(props){
         newFaves = [...newFaves, film];
       } else {
         console.log(`REMOVING ${film.title} TO FAVES`)
-        newFaves.splice(filmIndex,1)
+        newFaves.splice(filmIndex, 1)
       }
       setFaves(newFaves)
     }
     const filmsToDisplay = filter=== "all" ? props.films : faves;
 
-    const allFilms = filmsToDisplay.map((film,i)=> {
-            return(
+    const allFilms = filmsToDisplay.map((film, i)=> {
+      return(
                 <FilmRow 
                 film={film}
                 key={`filmrow${i}`}
@@ -33,8 +34,7 @@ export default function FilmList(props){
                 onFaveToggle={handleFaveToggle}
                 isFave={faves.includes(film)}
                 handleFilterClick={props.handleFilterClick}/>
-            )
-        })
+            )})
     
 
     // const allFilms = filmsToDisplay.map((film, i) => { .... })

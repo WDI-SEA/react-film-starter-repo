@@ -7,7 +7,7 @@ export default function FilmRow(props) {
     // }
         return(
             <div className="film-row" onClick={()=> {
-                props.handleDetailsClick(props.film)
+                props.onFaveToggle(props.film)
             }}>
                 <Poster 
                 poster_url={props.poster_url}
@@ -18,7 +18,7 @@ export default function FilmRow(props) {
                     <p>{props.film.release_date.split('-')[0]}</p>
                     {/* <p>{props.film.release_date.substring(0,4)}</p> */}
                     <Fave 
-                    onFaveToggle={() => { props.onFaveToggle(props.film) }}
+                    onFaveToggle={() => { props.onFaveToggle(props.film) }} 
                     isFave={props.isFave}/>
                 </div>
             </div>
