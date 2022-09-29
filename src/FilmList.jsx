@@ -14,12 +14,16 @@ export default function FilmList(props){
       let newFaves = [...faves];
       const filmIndex = newFaves.indexOf(film);
       if (filmIndex < 0) {
+        // if film does not show in faves array then add film to the array, we made a newFave array so we can add or delete from it
+
         console.log(`ADDING ${film.title} TO FAVES`)
         newFaves = [...newFaves, film];
       } else {
         console.log(`REMOVING ${film.title} TO FAVES`)
+        // .splice(where to start splicing, how many to splice)
         newFaves.splice(filmIndex, 1)
       }
+      // now setFaves (fave) to the newFaves array we modified
       setFaves(newFaves)
     }
 
