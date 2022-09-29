@@ -8,6 +8,8 @@ function App (){
   const [films] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
   
+  const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+  console.log(popularFilmsUrl)
   const handleDetailsClick = film => {
     // console.log(film)
     setCurrent(film)
