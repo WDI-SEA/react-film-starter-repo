@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 export default function App(){
 
-  const [films, setFilms] = useState([])
+  const [films, setFilms] = useState([]) // SET films to be an empty array then useEffect to set Films to the array from TMBD results
 
   const [current, setCurrent] = useState({})
 
@@ -24,7 +24,7 @@ export default function App(){
         console.log(err)
       }
     }
-    fetchMovieAPI()
+    fetchMovieAPI() // always invoke function again!
   }, [])
 
   const handleDetailsClick = (film) => {
