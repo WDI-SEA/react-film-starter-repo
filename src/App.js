@@ -5,15 +5,23 @@ import Details from './Details'
 import TMDB from './TMDB'
 
 export default function App() {
-  const [films, setFilms] = useState(TMDB.films)
+  const [films] = useState(TMDB.films)
+  const [current, setCurrentState] = useState([])
+
+  const handleDetailsClick = (film) => {
+    console.log(`Fetching details for ${film}`)
+    setCurrentState(film)
+  }
+
   console.log(films)
     return (
       <div className="film-library">
         <FilmList 
-          films={TMDB.films}
+          films={films}
+          handleDetailsClick={handleDetailsClick}
         />
         <Details 
-          films={TMDB.films}
+          film={current}
         />
       </div>
     );
