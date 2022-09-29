@@ -7,7 +7,7 @@ require('dotenv').config()
 
 
 export default function App() {
-  const url = `https://api.themoviedb.org/3/movie/550?api_key=${TMDB.api_key}`
+  const url = `https://api.themoviedb.org/3/movie/?api_key=${TMDB.api_key}`
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
 
@@ -23,7 +23,7 @@ useEffect(() => {
   fetch(popularFilmsUrl)
   .then(response => response.json())
   .then(jsonDeets => {
-    setFilms(jsonDeets)
+    console.log(jsonDeets)
   })
 }, [])
 return (

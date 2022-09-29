@@ -1,6 +1,6 @@
 require('dotenv').config()
 const TMDB = {
-  api_key: '94def301b030aee3881c1b80334723a5',
+  api_key: 'process.env.REACT_APP_TMDB_API_KEY',
   films: [
     {
       "id": 346364,
