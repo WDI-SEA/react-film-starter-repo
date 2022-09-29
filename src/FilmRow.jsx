@@ -16,11 +16,16 @@ function FilmRow (props){
                     title={props.film.title}
                 />
 
-            <div className="film-summary">
-                <Fave />
+                <div className="film-summary">
                     <h1 key ={props.key}> {props.film.title} </h1>
                     <p> {date.getFullYear()} </p>
                 </div>
+
+                <Fave 
+                    onFaveToggle={()=>{props.onFaveToggle(props.film)}}
+                />
+            
+
             </div> 
                 
     

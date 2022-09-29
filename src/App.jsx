@@ -8,6 +8,7 @@ import TMDB from "./TMDB"
 function App (props) {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] =useState({})
+  console.log(films)
     return (
       <div className="film-library">
        <FilmList 
