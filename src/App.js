@@ -9,7 +9,7 @@ function App() {
 
   const handleDetailsClick = film => {
     setCurrent(film)
-}
+  }
 
   return (
     <div className='film-library'>
