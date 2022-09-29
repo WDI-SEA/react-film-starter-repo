@@ -21,8 +21,9 @@ function FilmList (props){
         }
         setFaves(newFaves)
     }
+    const filmsToDisplay = filter === "all" ? props.films : faves
   
-    const allFilms = props.films.map((film, i)=>{
+    const allFilms = filmsToDisplay.map((film, i)=>{
         return (
             <FilmRow
                 key= {`film${i}`}
@@ -33,7 +34,6 @@ function FilmList (props){
         )
             
     })
-    console.log(allFilms)
 
     return(
         <div className="film-list">
