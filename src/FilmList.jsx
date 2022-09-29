@@ -6,8 +6,8 @@ export default function FilmList(props){
 
     const [filter, setFilter] = useState('all')
 
-    const handleFilterClick = (filter) => {
-      setFilter(filter)  
+    const handleFilterClick = film => {
+      setFilter(film)  
     }
 
     const handleFaveToggle = film => {
@@ -33,7 +33,7 @@ export default function FilmList(props){
                 poster_url={film.poster_path}
                 onFaveToggle={handleFaveToggle}
                 isFave={faves.includes(film)}
-                handleFilterClick={props.handleFilterClick}/>
+                handleDetailsClick={props.handleDetailsClick}/>
             )})
     
 
