@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import './App.css'
 import FilmList from './FilmList'
 import Details from './Details'
 import TMDB from './TMDB'
