@@ -4,7 +4,7 @@ import { useState } from 'react'
 function FilmList(props) {
 
     const [filter, setFilter] = useState('all')
-    const [faves, setFaves] = useState([])
+    // const [faves, setFaves] = useState([])
  
     const handleFilterClick = (type) => {
         // console.log(`a ${type} was clicked`)
@@ -12,7 +12,7 @@ function FilmList(props) {
     }
 
     const handleFaveToggle = (film) => {
-        let newFaves = [...faves]
+        let newFaves = [...props.faves]
         const filmIdx = newFaves.indexOf(film)
         if (filmIdx < 0) {
             // console.log(`adding ${film.title} to faves`)
@@ -21,10 +21,10 @@ function FilmList(props) {
             // console.log(`removing ${film.title} from faves`)
             newFaves.splice(filmIdx, 1)
         }
-        setFaves(newFaves)
+        props.setFaves(newFaves)
     }
 
-    const filmsToDisplay = filter === 'all' ? props.films : faves
+    const filmsToDisplay = filter === 'all' ? props.films : props.faves
 
     return (
         <div className="film-list">
@@ -36,7 +36,7 @@ function FilmList(props) {
                 </div>
                 <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} onClick={() => { handleFilterClick('faves') }}>
                     FAVES
-                    <span className="section-count">{faves.length}</span>
+                    <span className="section-count">{props.faves.length}</span>
                 </div>
             </div>
 
@@ -46,9 +46,10 @@ function FilmList(props) {
                         key={`filmrow${idx}`}
                         film={film}
                         onFaveToggle={handleFaveToggle}
-                        isFave={faves.includes(film)}
+                        isFave={props.faves.includes(film)}
                         handleDetailsClick={props.handleDetailsClick}
-                    />)
+                    />
+                    )
             })}
         </div>
     )
