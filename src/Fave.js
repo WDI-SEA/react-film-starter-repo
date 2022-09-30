@@ -1,16 +1,15 @@
 // import React, { Component } from 'react'
 import {useState} from 'react'
 
-export default function Fave() {
-    const [isFave, setIsFave] = useState(false)
+export default function Fave(props) {
 
     const handleClick = (e) => {
         e.stopPropagation()
-        console.log('fave clicked!')
-        setIsFave(!isFave)
+        // console.log('fave clicked!')
+        props.onFaveToggle()
     }
 
-    const action = isFave ?'remove_from_queue':'add_to_queue'
+    const action = props.isFave ?'remove_from_queue':'add_to_queue'
 
 
     return(
