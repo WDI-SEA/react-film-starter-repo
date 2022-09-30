@@ -14,7 +14,9 @@ function App() {
     console.log(`Fetching details for ${film.title}`)
     setCurrent(film)
   }
-
+  
+  
+// https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB.api_key}&language=en-US&page=1
   useEffect(() => {
     const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
     fetch(popularFilmsUrl)
@@ -28,6 +30,7 @@ function App() {
 
     return (
       <div className="film-library">
+      
         <FilmList 
         films = {films}
         setFilms={setFilms}
