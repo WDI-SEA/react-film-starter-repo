@@ -16,6 +16,7 @@ export default function FilmRow(props) {
             <div className='film-summary'>
                 <h1>{props.film.title}</h1>
                 <p>{props.film.release_date.split('-', 1)}</p>
+                <p>{props.reviewed ? 'Reviewed ✅' : ''}</p>
             </div>
 
             <Fave

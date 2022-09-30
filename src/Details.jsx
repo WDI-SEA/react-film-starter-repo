@@ -1,4 +1,32 @@
 export default function Details(props) {
+  const inputReview = (
+    <div className="reviews">
+    <label htmlFor="user-review">Review this film:</label>
+    <textarea
+      id="user-review"
+      value={props.review}
+      onChange={props.handleInputChange}
+    />
+
+    <button
+      onClick={props.handleReviewPost}
+    >
+      Post
+    </button>
+  </div>
+  )
+
+  const displayReview = (
+    <div>
+      <h3>My Review:</h3>
+
+      <p>{props.film.review}</p>
+    </div>
+  )
+
+  let review = props.film.review ? displayReview : inputReview
+
+
   const filmInfo = (
     <div className="film-detail is-hydrated">
       <figure className="film-backdrop">
@@ -13,7 +41,9 @@ export default function Details(props) {
           {props.film.overview}
         </p>
         <p>{props.isFave ? 'Favorited ⭐' : ''}</p>
+        {review}
       </div>
+
     </div>
   )
     

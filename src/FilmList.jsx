@@ -30,6 +30,7 @@ export default function FilmList(props) {
                         onFaveToggle={props.handleFaveToggle}
                         isFave={props.faves.includes(film)}
                         handleDetailsClick={props.handleDetailsClick}
+                        reviewed={film.review ? true : false}
                     />
                 )
             })}

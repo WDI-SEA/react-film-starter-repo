@@ -8,6 +8,7 @@ function App() {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
   const [faves, setFaves] = useState([])
+  const [review, setReview] = useState('')
 
   useEffect(() => {
     console.log('useEffect is firing!')
@@ -39,6 +40,26 @@ function App() {
     setFaves(newFaves)
   }
 
+  const handleInputChange = e => {
+    setReview(e.target.value)
+  }
+
+  const handleReviewPost = () => {
+    const currentIdx = films.indexOf(current)
+    const newFilmDeets = {...current, review: review}
+    const newFilmList = [...films]
+    newFilmList.splice(currentIdx, 1, newFilmDeets)
+    if (faves.includes(current)) {
+      const faveIdx = faves.indexOf(current)
+      const newFaves = [...faves]
+      newFaves.splice(faveIdx, 1, newFilmDeets)
+      setFaves(newFaves)
+    }
+    setCurrent(newFilmDeets)
+    setFilms(newFilmList)
+    setReview('')
+  }
+
   return (
     <div className='film-library'>
       <FilmList
@@ -50,7 +71,10 @@ function App() {
 
       <Details
         film={current}
-        isFave={faves.includes(current)}  
+        isFave={faves.includes(current)}
+        review={review}
+        handleInputChange={handleInputChange}
+        handleReviewPost={handleReviewPost}
       />
     </div>
   );
