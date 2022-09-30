@@ -27,6 +27,7 @@ const Details = (props) => {
         )
 
         const details = props.film.id ? filmInfo : emptyInfo
+        
         return (
             <div className="film-details">
                 <h1 className="section-title">DETAILS</h1>
