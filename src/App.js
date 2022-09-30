@@ -8,27 +8,22 @@ require('dotenv').config()
 
 
 export default function App(props) {
-  const API_KEY = process.env.REACT_APP_TMDB_API_KEY
-    // console.log(API_KEY)
 
   const [films, setFilms] = useState([])
   const [current, setCurrent] = useState({})
   // films (list of files) -- current is details right side.. start empty
 
+  useEffect(() => {
+    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+    fetch(popularFilmsUrl)
+    .then(response => response.json())
+    .then(jsonData => setFilms(jsonData.results))
+    }, [])
+
   const handleDetailsClick = film => {
     setCurrent(film)
   }
   
-  
-  useEffect(() => {
-    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-    fetch(popularFilmsUrl)
-    .then(response => response.json())
-    .then(jsonData => {
-      console.log(jsonData)
-      setFilms(jsonData.results)
-    })
-  }, [])
 
   return (
       <div className="film-library">
