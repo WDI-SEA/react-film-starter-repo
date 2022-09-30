@@ -2,6 +2,7 @@ import {useState} from "react"
 import FilmRow from "./FilmRow"
 
 
+
 function FilmList (props){
     const [filter, setFilter] = useState("all") 
     const [faves, setFaves] =useState([])
@@ -17,11 +18,12 @@ function FilmList (props){
         // index will return a value of -1 if the item is not in the array
         if(filmIndex <0) {
             newFaves= [...newFaves, film]
+            setFaves(newFaves)
         }else{
             // if film is in the array, index will return a value starting at 0
             newFaves.splice(filmIndex,1) //-> (where you want to start the splice,  how many to remove)
+            setFaves(newFaves)
         }
-        setFaves(newFaves)
     }
     const filmsToDisplay = filter === "all" ? props.films : faves
   
@@ -32,6 +34,7 @@ function FilmList (props){
                 film={film}
                 onFaveToggle={handleFaveToggle}
                 isFave={faves.includes(film)}
+                handleDetailsClick={props.handleDetailsClick}
              />
         )
             
