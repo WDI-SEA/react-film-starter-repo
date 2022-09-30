@@ -13,7 +13,7 @@ export default function FilmList(props) {
   const handleFaveToggle = film => {
     const newFaves = [...faves]
     const filmIndex = newFaves.indexOf(film)
-    // if the filmIndex is less than 0, we need to add the film to the newFaves, otherwise we would need to remove the filme from the newFaves array
+    // if the filmIndex is less than 0, we need to add the film to the newFaves, otherwise we would need to remove the film from the newFaves array
     if (filmIndex < 0) {
         console.log(`ADDING ${film.title} to the newFaves`)
         setFaves([...newFaves, film])
