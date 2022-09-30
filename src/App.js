@@ -16,6 +16,7 @@ function App (){
     .then(jsonDeets => {
       console.log(jsonDeets)
       setFilms(jsonDeets.results)
+    .catch(console.warn)
     })
   }, [])
 
