@@ -1,5 +1,5 @@
 const TMDB = {
-  api_key: '24b62b4fd67adb2414a4e77e352272b4',
+  api_key: process.env.REACT_APP_TMDB_API_KEY,
   films: [
     {
       "id": 346364,
