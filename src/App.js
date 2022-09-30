@@ -1,21 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+import './App.css'
+import FilmList from './FilmList'
+import Details from './Details'
+import TMDB from './TMDB'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+export default function App() {
+  const [films, setFilms] = useState(TMDB.films)
+  const [current, setCurrent] = useState({})
+
+  useEffect(() => {
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
+    fetch(url)
+      .then(response => response.json())
+      .then(jsonData => setFilms(jsonData.results))
+      .catch(console.warn)
+  }, [])
+
+  const handleDetailsClick = film => {
+    console.log('fetching details for film:', film.title)
+    setCurrent(film)
   }
-}
 
-export default App;
+
+  console.log('api key:', TMDB.api_key)
+
+  return (
+    <div className="film-library">
+      <FilmList 
+        films={films} 
+        handleDetailsClick={handleDetailsClick}
+      />
+
+      <Details 
+        films={TMDB.films} 
+        film={current}
+      />
+    </div>
+  )
+}
