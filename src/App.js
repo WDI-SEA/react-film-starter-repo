@@ -15,15 +15,16 @@ export default function App(props) {
     setCurrent(film)
   }
 
+  //need to restart the server to read the environment
+// console.log('api key', process.env.REACT_APP_TMDB_API_KEY)
+
   
   useEffect(() => {
     const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
     fetch(popularFilmsUrl)
       .then(response => response.json())
-      .then((data) => {
-      setFilms(data.results)
-      console.log("Movie Data:", data.results)
-    })
+      .then(jsonData => setFilms(jsonData.results))
+      .catch(console.warn) 
   }, [])
 
   return (
