@@ -6,8 +6,8 @@ export default class FilmRow extends Component {
         return (
             <div className='film-row'>
                 <Poster 
-                    poster_path={this.props.film.poster_path}
-                    title={this.props.film.title}
+                    url={`https://image.tmdb.org/t/p/w780/${this.props.film.poster_path}`}
+                    alt={this.props.film.title}
                 />
 
                 <div className='film-summary'>
