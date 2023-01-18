@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { useState} from 'react'
-import { useState} from 'react'
 
 export default function Fave(props) {
     const handleClick = e => {
