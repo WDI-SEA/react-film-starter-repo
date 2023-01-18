@@ -1,17 +1,22 @@
-import React, { Component } from 'react'
 import FilmList from './FilmList'
 import Details from './Details'
 import TMDB from './TMDB'
+import { useState } from 'react'
 
-class App extends Component {
-  render() {
+export default function App() {
+
+  const [films] = useState(TMDB.films)
+  const [current, setCurrent] = useState([])
+
+  const handleDetailsClick = (film) => {
+    console.log('fetching details for film:', film.title)
+    setCurrent(film)
+  }
+
     return (
       <div className="film-library">
-        <FilmList films={TMDB.films} />
-        <Details films={TMDB.films} />
+        <FilmList films={films} handleDetailsClick={handleDetailsClick} />
+        <Details film={current} />
       </div>
     )
   }
-}
-
-export default App
