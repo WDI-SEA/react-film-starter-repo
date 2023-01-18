@@ -1,28 +1,25 @@
-import FilmList from './FilmList'
-import Details from './Details'
-import TMDB from './TMDB'
-import { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-export default function App() {
-
-  const [films, setFilms] = useState(TMDB.films)
-  let [current, setCurrent] = useState({})
-
-  const handleDetailsClick = film => {
-    console.log('fetching details for film:', film.title)
-    setCurrent(film)
-    current = film
-  }
-
-    return (
-      <div className="film-library">
-        <FilmList 
-        films={films}
-        handleDetailsClick={handleDetailsClick}
-        />
-        <Details 
-        film={current}
-        />
-      </div>
-    );
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
+
+export default App;
