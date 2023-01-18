@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+export default function Fave(props) {
 
-export default class Fave extends Component {
-
-    handleClick = e => {
-        console.log("afadfdadfef")
+    const handleClick = e => {
+        e.stopPropagation()
+        console.log('handling fave click!')
+        props.onFaveToggle()
     }
-    render() {
-        return (
-            <>
-            <div onClick={this.handleClick} className="film-row-fave add_to_queue">
+
+    const action = props.isFave ? 'remove_from_queue' : 'add_to_queue' 
+
+    return (
+        <div className={`film-row-fave  ${action}`}
+            onClick={handleClick}
+        >
             <p className="material-icons">add_to_queue</p>
-            </div>
-            </>
-        )
-    }
+        </div>
+    )
 }

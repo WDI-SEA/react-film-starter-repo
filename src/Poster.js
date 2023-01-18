@@ -1,14 +1,11 @@
-import React, {Component} from "react";
 
-export default class Poster extends Component {
-    render() {
-        return(
-            <>
-                <img
-                    src={this.props.src}
-                    alt={this.props.alt}
-                />
-            </>
-        )
-    }
+
+export default function Poster(props) {
+    return (
+        <img 
+            src={`https://image.tmdb.org/t/p/w780/${props.poster_path}`} 
+            alt={`${props.title}'s movie poster`} 
+        />
+    )
 }
+
