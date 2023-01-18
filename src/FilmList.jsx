@@ -47,13 +47,13 @@ export default function FilmList(props) {
 
                 <div className="film-list-filters">
 
-                    <div className={`film-list-filter ${props.filter === 'all' ? 'is-active' : ''}`} 
+                    <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} 
                     onClick={() => setFilter("all")}>
                         ALL
                         <span className="section-count">{props.films.length}</span>
                     </div>
 
-                    <div className={`film-list-filter ${props.filter === 'faves' ? 'is-active' : ''}`} 
+                    <div className={`film-list-filter ${filter === 'faves' ? 'is-active' : ''}`} 
                     onClick={() => setFilter("faves")}>
                         FAVES
                         <span className="section-count">{faves.length}</span>

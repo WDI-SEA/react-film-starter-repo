@@ -4,7 +4,7 @@ import FilmList from './FilmList'
 import TMDB from './TMDB'
 import { useState} from 'react'
 
-function App() {
+export default function App() {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
 
@@ -29,7 +29,6 @@ function App() {
   )
 }
 
-export default App
 
 // export default class App extends Component {
 //   render() {
