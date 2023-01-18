@@ -10,7 +10,7 @@ export default function FilmList(props) {
   }
 
   const handleFaveToggle = (film) => {
-    let newFaves = [...faves]
+    const newFaves = [...faves]
     const filmIndex = newFaves.indexOf(film)
     filmIndex === -1 ? newFaves.push(film) : newFaves.splice(filmIndex, 1)
     setFaves(newFaves)
