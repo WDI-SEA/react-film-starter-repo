@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-import { useState} from 'react'
 
 export default function Poster(props) {
     return(
