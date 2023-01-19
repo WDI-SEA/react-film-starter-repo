@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import FilmRow from './FilmRow'
 import { useState} from 'react'
 
