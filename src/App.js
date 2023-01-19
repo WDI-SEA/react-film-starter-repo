@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 import FilmList from './FilmList'
 import Details from './Details'
 import TMDB from './TMDB'
@@ -8,6 +9,32 @@ import TMDB from './TMDB'
 export default function App() {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
+  
+  // console.log('api key:', TMDB.api_key)
+  
+  // useEffect(() => {
+  //   // console.log('UseEffect is FIRING!!')
+  //   const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+  //   fetch(popularFilmsUrl)
+  //   .then(response => response.json())
+  //   .then(jsonDeets => {
+  //     console.log(jsonDeets)
+  //   })
+  // }, [])  
+
+    useEffect(()=>{
+      const fetchMovies = async () => {
+        try {
+          const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+          const response = await axios.get(popularFilmsUrl)
+          console.log(response.data)
+        } catch(err){
+        console.log(err);
+      }
+    } 
+      fetchMovies()
+    }, [])
+
 
   const handleDetailsClick = film => {
     console.log("fetching details for film", film.title);
