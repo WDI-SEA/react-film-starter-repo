@@ -30,7 +30,7 @@ export default function FilmList(props) {
             film={film} 
             key={`film-${i}`}
             handleFaveToggle={handleFaveToggle}
-            handleDetailsClick={ () => {props.handleDetailsClick(props.film)}}
+            handleDetailsClick={props.handleDetailsClick}
             isFave={faves.includes(film)}
             />
         )
