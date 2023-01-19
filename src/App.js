@@ -1,20 +1,13 @@
-import React, {Component} from 'react'
+
 import './App.css'
 import Details from './Details'
 import FilmList from './FilmList'
 import TMDB from './TMDB'
-import {useState} from 'react'
-// export default class App extends Component{
-//   render(){
-//     return(
-//       <div className="film-library">
+import axios from 'axios'
 
-//   <FilmList films={TMDB.films}/>
-//   <Details films={TMDB.films}/>
-// </div>
-//     )
-//   }
-// }
+import {useState, useEffect} from 'react'
+// require('dotenv').config()
+
 export default function App(){
   let [films,setFilms] = useState(TMDB.films)
   let [current,setCurrent] =  useState({})
@@ -22,6 +15,13 @@ export default function App(){
     console.log(`printing for ${film}`)
     setCurrent(film)
   }
+  useEffect(() => {
+    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
+    fetch(popularFilmsUrl)
+      .then(response => response.json())
+      .then(jsonData => setFilms(jsonData.results))
+      .catch(console.warn) 
+  }, [])
   return(
     <div className="film-library">
 
