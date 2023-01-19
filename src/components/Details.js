@@ -2,8 +2,7 @@
 
 export default function Details(props) {
     
-  const action = props.faves.includes(props.film)
-  const onFaveToggle=() => props.onFaveToggle(props.film) 
+  const action = props.faves.includes(props.film) ? 'remove_from_queue' : 'add_to_queue'
     const filmInfo = (
         <div className="film-detail is-hydrated">
           <figure className="film-backdrop">
@@ -20,7 +19,8 @@ export default function Details(props) {
           </div>
           <div 
             className={`film-row-fave ${action}`} 
-            onClick={(e) => {props.handleFave(e, props.film)}}>
+            // onClick={(e) => {props.handleFave(e, props.film)}}>
+            onClick={(e) => {props.onFaveToggle(props.film)}}>
               <p className="material-icons">add_to_queue</p>
           </div>
         </div>
