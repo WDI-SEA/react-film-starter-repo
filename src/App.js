@@ -26,7 +26,26 @@ export default function App() {
         console.log(jsonData)
         setFilms(jsonData.results)
       })
+      .catch(error => {
+        console.warn(error)
+      })
   }, [])
+
+  //-------ASYNC/AWAIT-------
+  // useEffect(() => {
+  //   const fetchMovies = async () => {
+  //     try {
+  //       const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`
+
+  //       const response = await axios.get(popularFilmsUrl)
+  //       console.log(response.data)
+  //       setFilms(response.data.results)
+  //     } catch(error) {
+  //       console.warn(error)
+  //     }
+  //   }
+  //   fetchMovies() //don't forget to invoke
+  // }, [])
 
   return(
     <>
