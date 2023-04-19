@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Details from "./Details";
-import FilmList from "./FilmList";
-import TMDB from "./TMDB";
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import FilmList from './FilmList'
+import Details from './Details'
+import TMDB from './TMDB'
 
 class App extends Component {
   render() {
     const films = TMDB.films
     return (
       <div className="film-library">
-        <FilmList
+        <FilmList 
           films={films}
         />
-        <Details
+        <Details 
           films={films}
         />
-      </div>
-    )
+    </div>
+    );
   }
 }
 
-export default App
+export default App;
