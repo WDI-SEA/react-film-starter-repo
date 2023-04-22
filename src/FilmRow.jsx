@@ -3,18 +3,14 @@ import Poster from './Poster';
 import Fave from './Fave';
 
 const FilmRow = (props) => {
-  const { film } = props;
-
-  const handleDetailsClick = (film) => {
-    console.log(`fetching details for ${film.title}`);
-  };
+  const { film, isFave, onFaveToggle, handleDetailsClick } = props;
 
   return (
-    <div className="film-row" onClick={() => handleDetailsClick(props.film)}>
+    <div className="film-row" onClick={() => handleDetailsClick(film)}>
       <Poster url={film.poster_path} />
 
       <div className="film-summary">
-        <Fave />
+        <Fave isFave={isFave} onFaveToggle={onFaveToggle} />
         <h1>{film.title}</h1>
         <p>{film.release_date.split('-')[0]}</p>
       </div>
