@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+// import React, { Component } from 'react';
+// import logo from './logo.svg';
 import './App.css';
 import Details from "./Details";
 import FilmList from "./FilmList";
 import TMDB from "./TMDB";
 
-class App extends Component {
-  render() {
+function App() {
     return (
     <div className="film-library">
       <FilmList
@@ -16,7 +15,6 @@ class App extends Component {
       />
     </div>
     );
-  }
 }
 
 export default App;

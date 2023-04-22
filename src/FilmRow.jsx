@@ -1,23 +1,34 @@
-import React, { Component } from "react";
+import { useState } from "react"
 import Poster from "./Poster"
 import Fave from "./Fave";
 
-export default class FilmRow extends Component {
+export default function FilmRow(props) {
+    const [fave, setFave] = useState(false)
 
-    handleDetailsClick = film => {
-        console.log(`fetching details for ${film.title}`)
+    const handleDetailsClick = () => {
+        console.log(`fetching details for ${props.film}`)
     }
 
-    render() {
-        return(
-            <div className="film-row" onClick={() => this.handleDetailsClick(this.props.film)}>
-                <Poster poster={this.props.film.poster_path} title={this.props.film.title}/>
+    const handleFaveClick = (e) => {
+        e.stopPropagation()
+        console.log("fave clicked")
+        setFave(!fave)
+    }
+
+    return (
+        <>
+            <div className="film-row" onClick={handleDetailsClick}>
+                <Poster poster={props.film.poster_path} title={props.film.title} key={props.film.title} />
                 <div className="film-summary">
-                    <h1>{this.props.film.title}</h1>
-                    <p>{this.props.film.release_date.split('-')[0]}</p>
+                    <h1>{props.film.title}</h1>
+                    <p>{props.film.release_date.split('-')[0]}</p>
                 </div>
-                <Fave/>
+                <Fave
+                    film={props.film}
+                    handleFaveClick={handleFaveClick}
+                    fave={fave}
+                />
             </div>
-        )
-    }
+        </>
+    )
 }
