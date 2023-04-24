@@ -9,7 +9,7 @@ export default function FilmList(props) {
   const handleFaveToggle = film => {
     let newFaves = [...faves];
     const filmIndex = newFaves.indexOf(film);
-    if (filmIndex < 0) {
+    if (filmIndex === -1) {
       console.log(`ADDING ${film.title} TO FAVES`)
       newFaves = [...newFaves, film];
     } else {
