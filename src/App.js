@@ -8,14 +8,22 @@ import { useState } from 'react';
 
 
 
+
+
 function App() {
 
   const [films, setFilms] = useState(TMDB.films)
   const [current,setCurrent]=useState({})
+  const handleDetailsClick = film => {
+    setCurrent(film)
+  }
   return(
     <div className="App">
            <div className="film-library">
-              <FilmList films={films}/>
+              <FilmList 
+              films={films}
+              handleDetailsClick={handleDetailsClick}
+              />
               <Details films={films}/>
           </div>
       </div>
