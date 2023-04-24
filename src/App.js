@@ -24,7 +24,7 @@ function App() {
               films={films}
               handleDetailsClick={handleDetailsClick}
               />
-              <Details films={films}/>
+              <Details film={current}/>
           </div>
       </div>
   )
