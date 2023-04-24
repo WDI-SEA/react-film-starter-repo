@@ -15,7 +15,7 @@ export default function Fave(props) {
             }`}
             onClick={handleClick}
         >
-            <p className="material-icons App-logo">add_to_queue</p>
+            <p className="material-icons">add_to_queue</p>
         </div>
     );
 }
