@@ -23,7 +23,9 @@ const FilmList = (props) => {
     setFaves(faveCopy);
   };
 
-  const allFilms = props.films.map((film, i) => {
+  const filmsToDisplay = filter === 'all' ? props.films : faves;
+
+  const allFilms = filmsToDisplay.map((film, i) => {
     const isFave = faves.includes(film);
     return (
       <FilmRow
