@@ -4,7 +4,6 @@ import Details from "./Details";
 import FilmList from "./FilmList";
 import TMDB from "./TMDB";
 
-
 function App() {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})

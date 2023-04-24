@@ -6,18 +6,14 @@ export default function FilmList(props) {
     const [faves, setFaves] = useState([])
     const [isFave, setIsFave] = useState(false)
 
-    const handleFilterClick = (filter) => {
+    const handleFilterClick = filter => {
         console.log("a filter was clicked: " + filter)
         setFilter(filter)
     }
 
-    // const onFaveToggle = () => {
-    //     console.log("fave toggle in FilmList triggered")
-    // }
-
     const handleFaveToggle = film => {
         console.log("accept a film object as an argument")
-        let newFaves = faves.slice()
+        const newFaves = faves.slice()
         const filmIndex = newFaves.indexOf(film)
         if (filmIndex < 0) {
             console.log(`${film.title} needs to be added from fave array`)
@@ -28,18 +24,16 @@ export default function FilmList(props) {
         }
         setFaves(newFaves)
     }
-    const filmsToDisplay = filter==="all" ? props.films : faves;
+    const filmsToDisplay = filter === "all" ? props.films : faves;
 
     const filmRows = filmsToDisplay.map((film, i) => (
-        <FilmRow key={i} film={film} 
-        faves={faves}
-        onFaveToggle={handleFaveToggle}
-        isFave={faves.includes(film)} 
-        handleDetailsClick={props.handleDetailsClick}
+        <FilmRow key={`filmRow-${film.id}`} film={film}
+            faves={faves}
+            onFaveToggle={handleFaveToggle}
+            isFave={faves.includes(film)}
+            handleDetailsClick={props.handleDetailsClick}
         />
     ));
-
-
 
     return (
         <div className="film-list">
