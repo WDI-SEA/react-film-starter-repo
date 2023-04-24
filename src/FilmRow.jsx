@@ -19,6 +19,7 @@ export default function FilmRow(props){
                     <Fave 
                     handleFaveToggle= {()=>props.handleFaveToggle(props.film)}
                     isFave= {props.isFave}
+                    
                     />
                 </div>
             </div>

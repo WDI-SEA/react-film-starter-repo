@@ -8,15 +8,15 @@ import FilmRow from "./FilmRow"
     const [isFave, setIsFave] = useState(false)
 
     const handleFaveToggle = (film)=>{
-        let newFave = [...fave]
-        const filmIndex = newFave.indexOf(film)
+        let newFaves = [...fave]
+        const filmIndex = newFaves.indexOf(film)
         console.log(filmIndex)
         if (filmIndex === -1) {
-            newFave.push(film)
+            newFaves.push(film)
         } else {
-            newFave.splice(filmIndex, 1)
+            newFaves.splice(filmIndex, 1)
         }
-        setFave(newFave)
+        setFave(newFaves)
 
 
     }
@@ -32,7 +32,7 @@ import FilmRow from "./FilmRow"
             <FilmRow 
             key={`filmrow ${i}`}
             film={film}
-            handleFaveToggle= {handleFaveToggle}
+            onFaveToggle= {() => handleFaveToggle(film)}
             isFave={fave.includes(film)}
             handleDetailsClick= {props.handleDetailsClick}
             />
