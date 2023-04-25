@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FilmRow from './FilmRow';
+import axios from 'axios';
 
 export default function FilmList(props) {
   const [faves, setFaves] = useState([]);
   const [filter, setFilter] = useState('all');
-  const { films, handleDetailsClick, setCurrent } = props;
+  const [films, setFilms] = useState([]);
+
+  useEffect(() => {
+    const apiKey = process.env.REACT_APP_TMDB_API_KEY;
+    const filmUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
+    axios.get(filmUrl)
+      .then(response => {
+        setFilms(response.data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   const handleFaveToggle = film => {
     let newFaves = [...faves];
@@ -24,13 +37,13 @@ export default function FilmList(props) {
     setFilter(filter)
   }
 
-  const allFilms = props.films.map((film, i) => (
+  const allFilms = films.map((film, i) => (
     <FilmRow 
       film={film} 
       key={`filmRow-${i}`} 
       onFaveToggle={handleFaveToggle}
       isFave={faves.includes(film)} 
-      handleDetailsClick={handleDetailsClick}
+      handleDetailsClick={props.handleDetailsClick}
     /> 
   ))
 
@@ -40,7 +53,7 @@ export default function FilmList(props) {
       key={`filmRow-${i}`} 
       onFaveToggle={handleFaveToggle}
       isFave={true}
-      handleDetailsClick={handleDetailsClick}
+      handleDetailsClick={props.handleDetailsClick}
     />
   ))
 
