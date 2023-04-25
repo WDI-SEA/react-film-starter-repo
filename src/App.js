@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import FilmList from "./FilmList";
@@ -13,6 +13,17 @@ export default function App() {
     console.log(`Fetching details for ${film.title}`);
     setCurrent(film)
   };
+
+  const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB.api_key}&language=en-US&page=1`;
+
+  useEffect(() => {
+    console.log("UseEffect is firing!")
+    fetch(popularFilmsUrl)
+    .then(response => response.json())
+    .then(jsonData => {
+      setFilms(jsonData.results)
+    })
+  }, [])
 
   return (
     <div className="App">
