@@ -16,6 +16,10 @@ export default function Details(props) {
                     {props.film.overview}
                 </p>
             </div>
+
+            <div>
+                {props.isFave && "hey its a fave!"}
+            </div>
         </div>
     )
 
