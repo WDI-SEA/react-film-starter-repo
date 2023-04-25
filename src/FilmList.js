@@ -1,5 +1,6 @@
 import { useState } from "react"
 import FilmRow from "./FilmRow"
+import Details from "./Details"
 
 export default function FilmList(props) {
     const [filter, setFilter] = useState('all')
