@@ -1,10 +1,10 @@
-import { useState } from "react"
-import './App.css';
-import Details from './Details';
-import FilmList from './FilmList';
+import React, { useState, useEffect } from "react"
+import './App.css'
+import Details from './Details'
+import FilmList from './FilmList'
 import TMDB from "./TMDB"
 
-function App() {
+export default function App() {
   const [films, setFilms] = useState(TMDB.films)
   const [current, setCurrent] = useState({})
 
@@ -13,30 +13,22 @@ function App() {
     setCurrent(film)
   } 
 
+  useEffect(() => {
+    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB.api_key}&language=en-US&page=1`
+    fetch(popularFilmsUrl)
+    .then(response => response.json())
+    .then(jsonData => {
+      console.log(jsonData)
+      setFilms(jsonData.results)
+    })
+  }, [])
+
   return (
-    <div className="film-library">
-      <FilmList  
-        films={films} 
-        handleDetailsClick={handleDetailsClick}
-      />
-
-      <Details 
-        film={current} 
-      />
+    <div className="App">
+      <div className="film-library">
+        <FilmList films={films} handleDetailsClick={handleDetailsClick} setCurrent={setCurrent} />
+        {current && <Details film={current} />}
+      </div>
     </div>
-  )
+  );
 }
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="film-library">
-//         <FilmList  films={TMDB.films} />
-
-//         <Details films={TMDB.films} />
-//       </div>
-//     );
-//   }
-// }
-
-export default App;
